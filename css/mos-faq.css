@@ -1,0 +1,40 @@
+[id^="mos-faq-"].mos-faq-container .mos-faq-unit {
+	border-radius: 0;
+	overflow: hidden;
+}
+[id^="mos-faq-"] .mos-faq-heading {
+	padding: 0;
+	background-color: transparent;
+}
+[id^="mos-faq-"] .mos-faq-heading .mos-faq-title a {
+	display: block;
+	padding: 10px 15px;
+	text-decoration: none;
+	box-shadow: none;
+	outline: none;
+}
+[id^="mos-faq-"].mos-faq-container .mos-faq-title {
+	margin: 0;
+	position: relative;
+}
+[id^="mos-faq-"].mos-faq-container .mos-faq-title .mos-faq-icon-con {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+[id^="mos-faq-"].mos-faq-container .mos-faq-title .mos-faq-icon-con i:last-child {
+	display: none;
+}
+[id^="mos-faq-"].mos-faq-container .opened .mos-faq-title .mos-faq-icon-con i:last-child {
+	display: inline-block;
+}
+[id^="mos-faq-"].mos-faq-container .opened .mos-faq-title .mos-faq-icon-con i:first-child {
+	display: none;
+}
+[id^="mos-faq-"].mos-faq-container.mos-faq-block .mos-faq-title .mos-faq-icon-con {
+	display: none;
+}
+.mos-faq-accordion .mos-faq-collapse,
+.mos-faq-collapsible .mos-faq-collapse {
+	display: none;
+}
