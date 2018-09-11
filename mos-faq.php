@@ -16,7 +16,7 @@ require_once ( plugin_dir_path( __FILE__ ) . 'mos-faq-post-types.php' );
 require_once ( plugin_dir_path( __FILE__ ) . 'mos-faq-taxonomy.php' );
 
 require_once('plugins/update/plugin-update-checker.php');
-$themeInit = Puc_v4_Factory::buildUpdateChecker(
+$pluginInit = Puc_v4_Factory::buildUpdateChecker(
 	'https://raw.githubusercontent.com/mostak-shahid/update/master/mos-faq.json',
 	__FILE__,
 	'mos-faq'
