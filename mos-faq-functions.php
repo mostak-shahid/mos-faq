@@ -84,8 +84,9 @@ function mos_faq_func( $atts = array(), $content = '' ) {
 	}
 	if ($atts['orderby']) $args['orderby'] = $atts['orderby'];
 	if ($atts['order']) $args['order'] = $atts['order'];
-	if ($atts['author']) $args['author'] = $atts['order'];
-
+	if ($atts['author']) $args['author'] = $atts['author'];
+	// var_dump($args);
+	// die();
 
 	$query = new WP_Query( $args );
 	if ( $query->have_posts() ) :
