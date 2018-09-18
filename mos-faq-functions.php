@@ -224,7 +224,7 @@ function mos_faq_custom_script () {
 		margin: <?php echo $mos_faq_option['mos_faq_heading_measurements_margin'] ?>;
 		<?php endif; ?>	
 
-		<?php if ($mos_faq_option['mos_faq_body_border_width'] AND $mos_faq_option['mos_faq_body_border_style'] AND $mos_faq_option['mos_faq_body_border_color'] ) : ?>
+		<?php if ($mos_faq_option['mos_faq_heading_border_width'] AND $mos_faq_option['mos_faq_heading_border_style'] AND $mos_faq_option['mos_faq_heading_border_color'] ) : ?>
 		border: <?php echo $mos_faq_option['mos_faq_heading_border_width'] ?>px <?php echo $mos_faq_option['mos_faq_heading_border_style'] ?> <?php echo $mos_faq_option['mos_faq_heading_border_color'] ?>;
 		<?php endif; ?>
 		<?php if ($mos_faq_option['mos_faq_heading_border_radius']) : ?>
