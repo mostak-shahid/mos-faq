@@ -30,6 +30,7 @@ function mos_faq_admin_page () {
             <li class="tab-nav <?php if($active_tab == 'body') echo 'active';?>"><a data-id="body" href="?post_type=qa&page=settings&tab=body">Body</a></li>
             <li class="tab-nav <?php if($active_tab == 'heading') echo 'active';?>"><a data-id="heading" href="?post_type=qa&page=settings&tab=heading">Heading</a></li>
             <li class="tab-nav <?php if($active_tab == 'icon') echo 'active';?>"><a data-id="icon" href="?post_type=qa&page=settings&tab=icon">Icon</a></li>
+            <li class="tab-nav <?php if($active_tab == 'content') echo 'active';?>"><a data-id="content" href="?post_type=qa&page=settings&tab=content">Content</a></li>
             <li class="tab-nav <?php if($active_tab == 'advanced') echo 'active';?>"><a data-id="advanced" href="?post_type=qa&page=settings&tab=advanced">Advanced CSS, JS</a></li>
         </ul>
         <form method="post">
@@ -514,6 +515,148 @@ function mos_faq_admin_page () {
 	                </tbody>
 	            </table>
 	        </div>
+
+        	<div id="mos-faq-content" class="tab-con <?php if($active_tab == 'content') echo 'active' ?>">
+	            <h3>Heading Styling</h3>
+	            <table class="form-table">
+	                <tbody>
+	                    <tr>
+	                        <th scope="row"><label>Background</label></th>
+	                        <td>
+	                        	<div class="mos-row">
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_content_pbg" id="mos_faq_content_pbg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_content_pbg']; ?>" data-format="rgb" data-opacity="1" placeholder="Primary Background"/>
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_content_hbg" id="mos_faq_content_hbg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_content_hbg']; ?>" data-format="rgb" data-opacity="1" placeholder="Hover Background"/>
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_content_abg" id="mos_faq_content_abg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_content_abg']; ?>" data-format="rgb" data-opacity="1" placeholder="Active Background"/>
+				                        </div>
+		                        	</div>	                        		
+	                        	</div>
+	                        	
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th scope="row"><label>Font</label></th>
+	                        <td>
+	                        	<div class="mos-row">
+		                        	<div class="mos-form-con">
+		                        		<div class="mos-form-group px-unit">
+				                        	<label for="mos_faq_content_font_size">Font Size</label>
+				                        	<input type="text" name="mos_faq_content_font_size" id="mos_faq_content_font_size" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_font_size']; ?>" placeholder="Font Size">		                        			
+		                        		</div>	                        		
+		                        	</div>
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group px-unit">                      		
+				                        	<label for="mos_faq_content_font_height">Line Height</label>
+				                        	<input type="text" name="mos_faq_content_font_height" id="mos_faq_content_font_height" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_font_height']; ?>" placeholder="Line Height">
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">                       		
+				                        	<label for="mos_faq_content_font_align">Text Align</label>
+				                        	<select name="mos_faq_content_font_align" id="mos_faq_content_font_align" class="full-input">
+				                        		<option value=""></option>
+				                        	<?php foreach ($font_align as $key => $value) : ?>
+				                        		<option value="<?php echo $key ?>" <?php selected($mos_faq_option['mos_faq_content_font_align'], $key) ?>><?php echo $value ?></option>
+				                        	<?php endforeach; ?>
+				                        	</select>
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">                       		
+				                        	<label for="mos_faq_content_font_weight">Font Weight &amp; Style</label>
+											<select name="mos_faq_content_font_weight" id="mos_faq_content_font_weight" class="full-input">
+												<option value=""></option>
+				                        	<?php foreach ($font_weight as $key => $value) : ?>
+				                        		<option value="<?php echo $key ?>" <?php selected($mos_faq_option['mos_faq_content_font_weight'], $key) ?>><?php echo $value ?></option>
+				                        	<?php endforeach; ?>
+											</select>
+				                        </div>
+		                        	</div>
+		                        </div>
+		                        <div class="mos-row">
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">                       		
+				                        	<label for="mos_faq_content_font_pcolor">Primary Color</label>
+											<input type="text" name="mos_faq_content_font_pcolor" id="mos_faq_content_font_pcolor" class="moscp full-input" value="<?php echo @$mos_faq_option['mos_faq_content_font_pcolor']; ?>" data-format="rgb" placeholder="Primary Color">
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">                       		
+				                        	<label for="mos_faq_content_font_hcolor">Hover Color</label>
+											<input type="text" name="mos_faq_content_font_hcolor" id="mos_faq_content_font_hcolor" class="moscp full-input" value="<?php echo @$mos_faq_option['mos_faq_content_font_hcolor']; ?>" data-format="rgb" placeholder="Hover Color">
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">                       		
+				                        	<label for="mos_faq_content_font_acolor">Active Color</label>
+											<input type="text" name="mos_faq_content_font_acolor" id="mos_faq_content_font_acolor" class="moscp full-input" value="<?php echo @$mos_faq_option['mos_faq_content_font_acolor']; ?>" data-format="rgb" placeholder="Active Color">
+				                        </div>
+		                        	</div>
+		                        </div>
+	                        </td>
+	                    </tr>
+
+	                    <tr>
+	                        <th scope="row"><label for="mos_faq_content_measurements">Measurements</label></th>
+	                        <td>
+	                        	<div class="mos-row">		                        	
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">                       		
+											<input type="text" name="mos_faq_content_measurements_padding" id="mos_faq_content_measurements_padding" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_measurements_padding']; ?>" placeholder="Header Padding">
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">
+			                        		<input type="text" name="mos_faq_content_measurements_margin" id="mos_faq_content_measurements_margin" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_measurements_margin']; ?>" placeholder="Header Margin">
+				                        </div>
+		                        	</div>
+		                        </div>
+	                        </td>
+	                    </tr>
+	                    <tr>
+	                        <th scope="row"><label for="mos_faq_content_border">Border</label></th>
+	                        <td>
+	                        	<div class="mos-row">
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group px-unit">                      		
+				                        	<input type="text" name="mos_faq_content_border_width" id="mos_faq_content_border_width" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_border_width']; ?>" placeholder="Border Width">
+				                        </div>
+		                        	</div>		                        	
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">                       		
+											<select name="mos_faq_content_border_style" id="mos_faq_content_border_style" class="full-input">
+											<?php foreach ($border_style as $key => $value) : ?>
+				                        		<option value="<?php echo $key ?>" <?php selected($mos_faq_option['mos_faq_content_border_style'], $key) ?>><?php echo $value ?></option>
+				                        	<?php endforeach; ?>
+											</select>
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	 
+			                        	<div class="mos-form-group">                       		
+											<input type="text" name="mos_faq_content_border_color" id="mos_faq_content_border_color" class="moscp full-input" value="<?php echo @$mos_faq_option['mos_faq_content_border_color']; ?>" data-format="rgb" data-opacity="1" placeholder="Border Color">
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group px-unit">                      		
+				                        	<input type="text" name="mos_faq_content_border_radius" id="mos_faq_content_border_radius" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_border_radius']; ?>" placeholder="Border Radius">
+				                        </div>
+		                        	</div>
+		                        </div>
+	                        </td>
+	                    </tr>
+
+	                </tbody>
+	            </table>
+            </div>
         
         	<div id="mos-faq-advanced" class="tab-con <?php if($active_tab == 'advanced') echo 'active' ?>">
 	            <h3>Advanced Styling</h3>

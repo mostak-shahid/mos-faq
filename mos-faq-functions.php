@@ -1,5 +1,4 @@
 <?php
-
 function mos_faq_admin_enqueue_scripts(){
 	global $pagenow, $typenow;
 	// var_dump($pagenow); //edit.php
@@ -295,6 +294,58 @@ function mos_faq_custom_script () {
 		<?php if ($mos_faq_option['mos_faq_icon_font_acolor']) : ?>
 		color: <?php echo $mos_faq_option['mos_faq_icon_font_acolor'] ?>;
 		<?php endif; ?>
+	}
+	[id^="mos-faq-"].mos-faq-container .mos-faq-body {
+		<?php if ($mos_faq_option['mos_faq_content_font_pcolor']) : ?>
+		color: <?php echo $mos_faq_option['mos_faq_content_font_pcolor'] ?>;
+		<?php endif; ?>		
+		<?php if ($mos_faq_option['mos_faq_content_pbg']) : ?>
+		background-color: <?php echo $mos_faq_option['mos_faq_content_pbg'] ?>;
+		<?php endif; ?>	
+		<?php if ($mos_faq_option['mos_faq_content_font_size']) : ?>
+		font-size: <?php echo $mos_faq_option['mos_faq_content_font_size'] ?>px;
+		<?php endif; ?>	
+		<?php if ($mos_faq_option['mos_faq_content_font_height']) : ?>
+		line-height: <?php echo $mos_faq_option['mos_faq_content_font_height'] ?>px;
+		<?php endif; ?>	
+		<?php if ($mos_faq_option['mos_faq_content_font_align']) : ?>
+		text-align: <?php echo $mos_faq_option['mos_faq_content_font_align'] ?>;
+		<?php endif; ?>
+		<?php if ($mos_faq_option['mos_faq_content_font_weight']) : ?>
+		font-weight: <?php echo $mos_faq_option['mos_faq_content_font_weight'] ?>;
+		<?php endif; ?>
+		<?php if ($mos_faq_option['mos_faq_content_measurements_padding']) : ?>
+		padding: <?php echo $mos_faq_option['mos_faq_content_measurements_padding'] ?>;
+		<?php endif; ?>
+		<?php if ($mos_faq_option['mos_faq_content_measurements_margin']) : ?>
+		margin: <?php echo $mos_faq_option['mos_faq_content_measurements_margin'] ?>;
+		<?php endif; ?>	
+
+		<?php if ($mos_faq_option['mos_faq_content_border_width'] AND $mos_faq_option['mos_faq_content_border_style'] AND $mos_faq_option['mos_faq_content_border_color'] ) : ?>
+		border: <?php echo $mos_faq_option['mos_faq_content_border_width'] ?>px <?php echo $mos_faq_option['mos_faq_content_border_style'] ?> <?php echo $mos_faq_option['mos_faq_content_border_color'] ?>;
+		<?php endif; ?>
+		<?php if ($mos_faq_option['mos_faq_content_border_radius']) : ?>
+		-webkit-border-radius: <?php echo $mos_faq_option['mos_faq_content_border_radius'] ?>px;
+		-moz-border-radius: <?php echo $mos_faq_option['mos_faq_content_border_radius'] ?>px;
+		-o-border-radius: <?php echo $mos_faq_option['mos_faq_content_border_radius'] ?>px;
+		border-radius: <?php echo $mos_faq_option['mos_faq_content_border_radius'] ?>px;
+		<?php endif; ?>	
+	}
+	[id^="mos-faq-"].mos-faq-container .mos-faq-unit:hover .mos-faq-body {
+		<?php if ($mos_faq_option['mos_faq_content_font_hcolor']) : ?>
+		color: <?php echo $mos_faq_option['mos_faq_content_font_hcolor'] ?>;
+		<?php endif; ?>	
+		<?php if ($mos_faq_option['mos_faq_content_hbg']) : ?>
+		background-color: <?php echo $mos_faq_option['mos_faq_content_hbg'] ?>;
+		<?php endif; ?>		
+	}
+	[id^="mos-faq-"].mos-faq-container .mos-faq-unit.opened .mos-faq-body {	
+		<?php if ($mos_faq_option['mos_faq_content_font_acolor']) : ?>
+		color: <?php echo $mos_faq_option['mos_faq_content_font_acolor'] ?>;
+		<?php endif; ?>	
+		<?php if ($mos_faq_option['mos_faq_content_abg']) : ?>
+		background-color: <?php echo $mos_faq_option['mos_faq_content_abg'] ?>;
+		<?php endif; ?>	
 	}
 	<?php echo $mos_faq_option['mos_faq_css']; ?>
 	</style>
