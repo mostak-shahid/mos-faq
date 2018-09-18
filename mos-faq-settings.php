@@ -517,7 +517,7 @@ function mos_faq_admin_page () {
 	        </div>
 
         	<div id="mos-faq-content" class="tab-con <?php if($active_tab == 'content') echo 'active' ?>">
-	            <h3>Heading Styling</h3>
+	            <h3>Content Styling</h3>
 	            <table class="form-table">
 	                <tbody>
 	                    <tr>
@@ -611,12 +611,12 @@ function mos_faq_admin_page () {
 	                        	<div class="mos-row">		                        	
 		                        	<div class="mos-form-con">	 
 			                        	<div class="mos-form-group">                       		
-											<input type="text" name="mos_faq_content_measurements_padding" id="mos_faq_content_measurements_padding" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_measurements_padding']; ?>" placeholder="Header Padding">
+											<input type="text" name="mos_faq_content_measurements_padding" id="mos_faq_content_measurements_padding" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_measurements_padding']; ?>" placeholder="Content Padding">
 				                        </div>
 		                        	</div>
 		                        	<div class="mos-form-con">	 
 			                        	<div class="mos-form-group">
-			                        		<input type="text" name="mos_faq_content_measurements_margin" id="mos_faq_content_measurements_margin" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_measurements_margin']; ?>" placeholder="Header Margin">
+			                        		<input type="text" name="mos_faq_content_measurements_margin" id="mos_faq_content_measurements_margin" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_measurements_margin']; ?>" placeholder="Content Margin">
 				                        </div>
 		                        	</div>
 		                        </div>
