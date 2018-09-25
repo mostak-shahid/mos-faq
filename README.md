@@ -1,15 +1,15 @@
-# FAQ Manager #
-**Contributors:** norcross
+# Mos FAQ #
+**Plugin Author:** Md. Mostak Shahid
 
-**Donate link:** http://andrewnorcross.com/donate
+**Author URI:** http://mostak.belocal.today/
 
 **Tags:** frequently asked questions, FAQ, shortcodes, custom post types
 
 **Requires at least:** 4.0
 
-**Tested up to:** 4.7
+**Tested up to:** 4.9.8
 
-**Stable tag:** 2.0.0
+**Stable tag:** 1.0.0
 
 **License:** GPLv2 or later
 
@@ -17,13 +17,13 @@
 
 
 ## Description ##
-Uses custom post types and taxonomies to manage an FAQ section for your site. Includes a set of custom taxonomies to organize, and shortcode options for different display configurations. [See the FAQ section](http://wordpress.org/extend/plugins/wordpress-faq-manager/faq "See the FAQ section")  for complete setup options.
+Uses custom post types and taxonomies to manage an FAQ section for your site. Includes a set of custom taxonomies to organize, and shortcode options for different display configurations.
 
 ## Installation ##
 
 This section describes how to install the plugin and get it working.
 
-1. Upload the 'wordpress-faq-manager' folder to the `/wp-content/plugins/` directory or install via the WP admin panel
+1. Upload the 'mos-faq' folder to the `/wp-content/plugins/` directory or install via the WP admin panel
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. That's it.
 
