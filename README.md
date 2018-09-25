@@ -40,6 +40,8 @@ Each FAQ acts like a "post". You can assign your own categories or tags and orga
 * For the complete list:
 	place `[mos_faq]` on a post / page
 
+	[mos_faq limit="-1/any_number" offset="0/any_number" category="blank/category ids seperate by ," tag="blank/category ids seperate by ," orderby="blank/DESC,ASC" order="blank/ID,author,title,name,type,date,modified,parent,rand,comment_count" author="1/any_number" container="1/0" container_class="blank/any_string" class="blank/any_string" singular="0/1" pagination="0/1" view="accordion/collapsible/block"]
+
 * For a single FAQ:
 	place `[mos_faq faq_id="ID"]` on a post / page
 
