@@ -42,39 +42,7 @@ Each FAQ acts like a "post". You can assign your own categories or tags and orga
 
 	[mos_faq limit="-1/any_number" offset="0/any_number" category="blank/category ids seperate by ," tag="blank/category ids seperate by ," orderby="blank/DESC,ASC" order="blank/ID,author,title,name,type,date,modified,parent,rand,comment_count" author="1/any_number" container="1/0" container_class="blank/any_string" class="blank/any_string" singular="0/1" pagination="0/1" view="accordion/collapsible/block"]
 
-* For a single FAQ:
-	place `[mos_faq faq_id="ID"]` on a post / page
 
-* List all from a single FAQ topic category:
-	place `[mos_faq faq_topic="topic-slug"]` on a post / page
-
-* List all from a single FAQ tag:
-	place `[mos_faq faq_tag="tag-slug"]` on a post / page
-
-* List all from multiple FAQ tags:
-	place [mos_faq faq_tag="tag-slug-1, tag-slug-2"] on a post / page
-
-* List all from both FAQ topcis and FAQ tags:
-	place [mos_faq faq_topic="topic-slug-1" faq_tag="tag-slug-2"] on a post / page
-
-The list will show 10 FAQs based on your sorting (if none has been done, it will be in date order).
-* To display only 5:
-	place `[mos_faq limit="5"]` on a post / page
-
-* To display ALL:
-	place `[mos_faq limit="-1"]` on a post / page
-
-* For a list with a title and link to full FAQ:
-	place `[mos_faq]` on a post / page
-
-* For a list with a group of titles that link to complete content later in page:
-	place `[mos_faq]` on a post / page
-
-* For a list of taxonomies (topics or tags) with a link to their respective archive page:
-	place `[mos_faq]` or `[faqtaxlist type="tags"]` on a post / page
-
-* For a list of taxonomies (topics or tags) with their description:
-	place `[mos_faq]` on a post / page
 
 ## Screenshots ##
 
