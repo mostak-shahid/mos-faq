@@ -34,6 +34,10 @@
 [id^="mos-faq-"].mos-faq-container.mos-faq-block .mos-faq-title .mos-faq-icon-con {
 	display: none;
 }
+.mos-faq-collapsible .mos-faq-title .mos-faq-icon-con,
+.mos-faq-accordion .mos-faq-title .mos-faq-icon-con {
+	cursor: pointer;
+}
 .mos-faq-accordion .mos-faq-collapse,
 .mos-faq-collapsible .mos-faq-collapse {
 	display: none;

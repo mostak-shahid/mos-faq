@@ -38,7 +38,7 @@ function mos_faq_func( $atts = array(), $content = '' ) {
 	$slices = explode(" ",$icons[$index]);
 	$html = '';
 	$atts = shortcode_atts( array(
-		'limit'				=> -1,
+		'limit'				=> '-1',
 		'offset'			=> 0,
 		'category'			=> '',
 		'tag'				=> '',
@@ -59,7 +59,7 @@ function mos_faq_func( $atts = array(), $content = '' ) {
 		'post_type' 		=> 'qa',
 		'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
 	);
-	if ($atts['limit'] AND $atts['limit'] != '-1') $args['posts_per_page'] = $atts['limit'];
+	$args['posts_per_page'] = $atts['limit'];
 	if ($atts['offset']) $args['offset'] = $atts['offset'];
 
 	if ($atts['category'] OR $atts['tag']) {
