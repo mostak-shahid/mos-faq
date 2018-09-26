@@ -3,7 +3,7 @@
 
 **Author URI:** http://mostak.belocal.today/
 
-**Demo:**[Mos FAQ Demo](http://mostak.belocal.today/mos-faq/)
+**Demo:** [Mos FAQ Demo](http://mostak.belocal.today/mos-faq/)
 
 **Tags:** frequently asked questions, FAQ, FAQs, easy FAQ, knowledge base, simple FAQ, FAQ categories, FAQs, knowledgebase, answer, answers, faq page, FAQ Plugin, help, help desk, helpdesk, questions, wordpress faq, FAQ list, FAQ accordion, custom post type with accordion, faq list, faq with accordion, jquery ui accordion, jquery-ui, shortcodes, wordpress, WordPress Plugin, Categories, social media, facebook, widget, widgets, statistics, AJAX, analytics, responsive
 
