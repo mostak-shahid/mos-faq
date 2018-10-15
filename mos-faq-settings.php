@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" ) {
 }
 
 function mos_faq_admin_menu () {
-    add_submenu_page( 'edit.php?post_type=qa', 'Mos FAQ Settings', 'Settings', 'manage_options', 'settings', 'mos_faq_admin_page' );
+    add_submenu_page( 'edit.php?post_type=qa', 'Mos FAQ Settings', 'Settings', 'manage_options', 'faq_settings', 'mos_faq_admin_page' );
 }
 add_action("admin_menu", "mos_faq_admin_menu");
 
@@ -26,12 +26,12 @@ function mos_faq_admin_page () {
     <div class="wrap mos-faq-wrapper">
         <h1><?php _e("Mos FAQ Settings") ?></h1>
         <ul class="nav nav-tabs">
-            <li class="tab-nav <?php if(!@$active_tab OR $active_tab == 'dashboard') echo 'active';?>"><a data-id="dashboard" href="?post_type=qa&page=settings&tab=dashboard">Dashboard</a></li>
-            <li class="tab-nav <?php if($active_tab == 'body') echo 'active';?>"><a data-id="body" href="?post_type=qa&page=settings&tab=body">Body</a></li>
-            <li class="tab-nav <?php if($active_tab == 'heading') echo 'active';?>"><a data-id="heading" href="?post_type=qa&page=settings&tab=heading">Heading</a></li>
-            <li class="tab-nav <?php if($active_tab == 'icon') echo 'active';?>"><a data-id="icon" href="?post_type=qa&page=settings&tab=icon">Icon</a></li>
-            <li class="tab-nav <?php if($active_tab == 'content') echo 'active';?>"><a data-id="content" href="?post_type=qa&page=settings&tab=content">Content</a></li>
-            <li class="tab-nav <?php if($active_tab == 'advanced') echo 'active';?>"><a data-id="advanced" href="?post_type=qa&page=settings&tab=advanced">Advanced CSS, JS</a></li>
+            <li class="tab-nav <?php if(!@$active_tab OR $active_tab == 'dashboard') echo 'active';?>"><a data-id="dashboard" href="?post_type=qa&page=faq_settings&tab=dashboard">Dashboard</a></li>
+            <li class="tab-nav <?php if($active_tab == 'body') echo 'active';?>"><a data-id="body" href="?post_type=qa&page=faq_settings&tab=body">Body</a></li>
+            <li class="tab-nav <?php if($active_tab == 'heading') echo 'active';?>"><a data-id="heading" href="?post_type=qa&page=faq_settings&tab=heading">Heading</a></li>
+            <li class="tab-nav <?php if($active_tab == 'icon') echo 'active';?>"><a data-id="icon" href="?post_type=qa&page=faq_settings&tab=icon">Icon</a></li>
+            <li class="tab-nav <?php if($active_tab == 'content') echo 'active';?>"><a data-id="content" href="?post_type=qa&page=faq_settings&tab=content">Content</a></li>
+            <li class="tab-nav <?php if($active_tab == 'advanced') echo 'active';?>"><a data-id="advanced" href="?post_type=qa&page=faq_settings&tab=advanced">Advanced CSS, JS</a></li>
         </ul>
         <form method="post">
 
