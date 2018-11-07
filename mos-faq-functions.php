@@ -26,7 +26,7 @@ function mos_faq_enqueue_scripts(){
 		wp_enqueue_style( 'font-awesome.min', plugins_url( 'fonts/font-awesome-4.7.0/css/font-awesome.min.css', __FILE__ ) );
 	}
 	wp_enqueue_style( 'mos-faq', plugins_url( 'css/mos-faq.css', __FILE__ ) );
-	wp_enqueue_script( 'mos-faq', plugins_url( 'js/mos-faq.js', __FILE__ ), array('jquery') );
+	wp_enqueue_script( 'mos-faq.min', plugins_url( 'js/mos-faq.min.js', __FILE__ ), array('jquery') );
 
 
 }
