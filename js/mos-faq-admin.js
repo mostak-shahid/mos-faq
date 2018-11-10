@@ -19,10 +19,10 @@ jQuery(document).ready(function($) {
       var id = $(this).data('id');
       //alert('#faq-' + id);
       setfaqCookie('faq_active_tab',id,1);
-      // $('#mos-faq-'+id).addClass('active');
-      // $('#mos-faq-'+id).siblings().removeClass('active');
-      $('#mos-faq-'+id).show();
-      $('#mos-faq-'+id).siblings().hide();
+      $('#mos-faq-'+id).addClass('active').show();
+      $('#mos-faq-'+id).siblings().removeClass('active').hide();
+      // $('#mos-faq-'+id).show();
+      // $('#mos-faq-'+id).siblings().hide();
       $(this).closest('.tab-nav').addClass('active');
       $(this).closest('.tab-nav').siblings().removeClass('active');
       //$(this).closest('.tab-nav').css("background-color", "red");
