@@ -3,7 +3,7 @@
 Plugin Name: Mos FAQ
 Plugin URI: http://mostak.belocal.today/plugins/mos-faq/
 Description: Mos FAQ plugin that lets you easily create, order and publicize FAQs using shortcodes.
-Version: 1.0.5
+Version: 1.0.6
 Author: Md. Mostak Shahid
 Author URI: http://mostak.belocal.today/
 License: GPL2
