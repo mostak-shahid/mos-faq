@@ -688,11 +688,29 @@ function mos_faq_admin_page () {
 	                    </tr>
 	                    <tr>
 	                        <th scope="row"><label for="mos_faq_css">Custom Css</label></th>
-	                        <td><textarea name="mos_faq_css" id="mos_faq_css" rows="10" class="regular-text"><?php echo @$mos_faq_option['mos_faq_css']; ?></textarea></td>
+	                        <td>
+	                        	<textarea name="mos_faq_css" id="mos_faq_css" rows="10" class="regular-text"><?php echo @$mos_faq_option['mos_faq_css']; ?></textarea>
+								<script>
+		                        var editor = CodeMirror.fromTextArea(document.getElementById("mos_faq_css"), {
+		                          lineNumbers: true,
+		                          mode: "text/css",
+		                          extraKeys: {"Ctrl-Space": "autocomplete"}
+		                        });
+								</script>
+	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th scope="row"><label for="mos_faq_js">Custom JS</label></th>
-	                        <td><textarea name="mos_faq_js" id="mos_faq_js" rows="10" class="regular-text"><?php echo @$mos_faq_option['mos_faq_js']; ?></textarea></td>
+	                        <td>
+	                        	<textarea name="mos_faq_js" id="mos_faq_js" rows="10" class="regular-text"><?php echo @$mos_faq_option['mos_faq_js']; ?></textarea>
+								<script>
+		                        var editor = CodeMirror.fromTextArea(document.getElementById("mos_faq_js"), {
+		                          lineNumbers: true,
+		                          mode: "text/css",
+		                          extraKeys: {"Ctrl-Space": "autocomplete"}
+		                        });
+								</script>
+	                        </td>
 	                    </tr>
 	                </tbody>
 	            </table>

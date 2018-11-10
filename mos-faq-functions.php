@@ -10,7 +10,19 @@ function mos_faq_admin_enqueue_scripts(){
 
 		//wp_enqueue_media();
 
-		wp_enqueue_script( 'jquery' );
+		wp_enqueue_script( 'jquery' );		
+		/*Editor*/
+		//wp_enqueue_style( 'docs', plugins_url( 'plugins/CodeMirror/doc/docs.css', __FILE__ ) );
+		wp_enqueue_style( 'codemirror', plugins_url( 'plugins/CodeMirror/lib/codemirror.css', __FILE__ ) );
+		wp_enqueue_style( 'show-hint', plugins_url( 'plugins/CodeMirror/addon/hint/show-hint.css', __FILE__ ) );
+
+		wp_enqueue_script( 'codemirror', plugins_url( 'plugins/CodeMirror/lib/codemirror.js', __FILE__ ), array('jquery') );
+		wp_enqueue_script( 'css', plugins_url( 'plugins/CodeMirror/mode/css/css.js', __FILE__ ), array('jquery') );
+		wp_enqueue_script( 'javascript', plugins_url( 'plugins/CodeMirror/mode/javascript/javascript.js', __FILE__ ), array('jquery') );
+		wp_enqueue_script( 'show-hint', plugins_url( 'plugins/CodeMirror/addon/hint/show-hint.js', __FILE__ ), array('jquery') );
+		wp_enqueue_script( 'css-hint', plugins_url( 'plugins/CodeMirror/addon/hint/css-hint.js', __FILE__ ), array('jquery') );
+		wp_enqueue_script( 'javascript-hint', plugins_url( 'plugins/CodeMirror/addon/hint/javascript-hint.js', __FILE__ ), array('jquery') );
+		/*Editor*/
 		wp_enqueue_script( 'jquery.minicolors', plugins_url( 'plugins/colorpicker/jquery.minicolors.js', __FILE__ ), array('jquery') );
 		wp_enqueue_script( 'mos-faq-admin', plugins_url( 'js/mos-faq-admin.js', __FILE__ ), array('jquery') );
 	}
