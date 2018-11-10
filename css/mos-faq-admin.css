@@ -47,12 +47,12 @@
     border: 1px solid #cccccc;
 }
 
-.mos-faq-wrapper .tab-con {
-	display: none;
+/* .mos-faq-wrapper .tab-con {
+    display: none;
 }
 .mos-faq-wrapper .tab-con.active {
-	display: block;
-}
+    display: block;
+} */
 .mos-form-group label {
 	display: block;
     font-size: 12px;

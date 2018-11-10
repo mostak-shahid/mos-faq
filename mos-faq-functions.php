@@ -24,6 +24,7 @@ function mos_faq_admin_enqueue_scripts(){
 		wp_enqueue_script( 'javascript-hint', plugins_url( 'plugins/CodeMirror/addon/hint/javascript-hint.js', __FILE__ ), array('jquery') );
 		/*Editor*/
 		wp_enqueue_script( 'jquery.minicolors', plugins_url( 'plugins/colorpicker/jquery.minicolors.js', __FILE__ ), array('jquery') );
+		wp_enqueue_script( 'mos-faq-functions', plugins_url( 'js/mos-faq-functions.js', __FILE__ ), array('jquery') );
 		wp_enqueue_script( 'mos-faq-admin', plugins_url( 'js/mos-faq-admin.js', __FILE__ ), array('jquery') );
 	}
 }

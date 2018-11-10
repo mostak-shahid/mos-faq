@@ -16,9 +16,9 @@ add_action("admin_menu", "mos_faq_admin_menu");
 
 
 function mos_faq_admin_page () {
-    if( isset( $_GET[ 'tab' ] ) ) {
-        $active_tab = $_GET[ 'tab' ];
-    }
+	if (@$_GET['tab']) $active_tab = $_GET['tab'];
+	elseif (@$_COOKIE['faq_active_tab']) $active_tab = $_COOKIE['faq_active_tab'];
+	else $active_tab = 'dashboard';
     $mos_faq_option = get_option( 'mos_faq_option' );
     global $font_align, $font_weight, $border_style, $icons;
     //var_dump($mos_faq_option);
@@ -26,7 +26,7 @@ function mos_faq_admin_page () {
     <div class="wrap mos-faq-wrapper">
         <h1><?php _e("Mos FAQ Settings") ?></h1>
         <ul class="nav nav-tabs">
-            <li class="tab-nav <?php if(!@$active_tab OR $active_tab == 'dashboard') echo 'active';?>"><a data-id="dashboard" href="?post_type=qa&page=faq_settings&tab=dashboard">Dashboard</a></li>
+            <li class="tab-nav <?php if($active_tab == 'dashboard') echo 'active';?>"><a data-id="dashboard" href="?post_type=qa&page=faq_settings&tab=dashboard">Dashboard</a></li>
             <li class="tab-nav <?php if($active_tab == 'body') echo 'active';?>"><a data-id="body" href="?post_type=qa&page=faq_settings&tab=body">Body</a></li>
             <li class="tab-nav <?php if($active_tab == 'heading') echo 'active';?>"><a data-id="heading" href="?post_type=qa&page=faq_settings&tab=heading">Heading</a></li>
             <li class="tab-nav <?php if($active_tab == 'icon') echo 'active';?>"><a data-id="icon" href="?post_type=qa&page=faq_settings&tab=icon">Icon</a></li>
@@ -35,7 +35,7 @@ function mos_faq_admin_page () {
         </ul>
         <form method="post">
 
-        	<div id="mos-faq-dashboard" class="tab-con <?php if(!@$active_tab OR $active_tab == 'dashboard') echo 'active' ?>">
+        	<div id="mos-faq-dashboard" class="tab-con <?php if($active_tab == 'dashboard') echo 'active' ?>">
             	<h2>Dashboard</h2>
             	<div class="desc">
             		<p><strong>For using faqs in your post or page use this shortcode</strong></p>

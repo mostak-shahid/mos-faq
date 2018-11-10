@@ -1,5 +1,5 @@
 jQuery(document).ready(function($) {
-  $('.mos-faq-wrapper .tab-nav > a').click(function(event) {
+  /*$('.mos-faq-wrapper .tab-nav > a').click(function(event) {
       event.preventDefault();
       var id = $(this).data('id');
       //alert('#mos-faq-' + id);
@@ -8,7 +8,26 @@ jQuery(document).ready(function($) {
       $(this).closest('.tab-nav').addClass('active');
       $(this).closest('.tab-nav').siblings().removeClass('active');
       //$(this).closest('.tab-nav').css("background-color", "red");
+  });*/
+  $(window).load(function(){
+    $('.mos-faq-wrapper .tab-con').hide();
+    $('.mos-faq-wrapper .tab-con.active').show();
   });
+
+  $('.mos-faq-wrapper .tab-nav > a').click(function(event) {
+      event.preventDefault();
+      var id = $(this).data('id');
+      //alert('#faq-' + id);
+      setfaqCookie('faq_active_tab',id,1);
+      // $('#mos-faq-'+id).addClass('active');
+      // $('#mos-faq-'+id).siblings().removeClass('active');
+      $('#mos-faq-'+id).show();
+      $('#mos-faq-'+id).siblings().hide();
+      $(this).closest('.tab-nav').addClass('active');
+      $(this).closest('.tab-nav').siblings().removeClass('active');
+      //$(this).closest('.tab-nav').css("background-color", "red");
+  });
+
   $('.moscp').each( function() {
     $(this).minicolors({
       control: $(this).attr('data-control') || 'hue',
