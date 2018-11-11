@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Mos FAQ
+Plugin Name: Mos FAQs
 Plugin URI: http://mostak.belocal.today/plugins/mos-faq/
 Description: Mos FAQ plugin that lets you easily create, order and publicize FAQs using shortcodes.
 Version: 1.0.11

@@ -23,12 +23,12 @@ A simple FAQ plugin that lets you create or your users FAQs, order FAQs, publici
 
 #### FAQ KEY FEATURES ####
 
-* Unlimited FAQs, with unlimited tag and category support
-* Create FAQ categories
-* Create FAQ posts and assign categories to them
-* An AJAX FAQ search form
-* Export all FAQs to a PDF to create a user manual
-* Insert custom CSS to style your FAQ posts
+* Mos FAQs, with unlimited tag and category support
+* Create FAQ categories and tags
+* Create FAQ posts and assign categories and tags to them
+* Easy design layout to style your FAQ posts
+* For advanced user additional CSS and JS input panel for adding custom scripts
+* And the most important thing it will not add any additional time on your page load time
 
 ## Installation ##
 
