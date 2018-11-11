@@ -21,7 +21,7 @@
 ## Description ##
 A simple FAQ plugin that lets you create or your users FAQs, order FAQs, publicize FAQs, etc. It uses custom post types and taxonomies to manage an FAQ section for your site. Includes shortcode options for different display configurations.
 
-### FAQ KEY FEATURES ###
+#### FAQ KEY FEATURES ####
 
 * Unlimited FAQs, with unlimited tag and category support
 * Create FAQ categories
