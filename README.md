@@ -3,7 +3,7 @@
 
 **Author URI:** http://mostak.belocal.today/
 
-**Demo:** [Mos FAQ Demo](http://mostak.belocal.today/mos-faq/)
+**Demo:** [Mos FAQ Demo](http://mostak.belocal.today/plugins/mos-faq/)
 
 **Tags:** frequently asked questions, FAQ, FAQs, easy FAQ, knowledge base, simple FAQ, FAQ categories, FAQs, knowledgebase, answer, answers, faq page, FAQ Plugin, help, help desk, helpdesk, questions, wordpress faq, FAQ list, FAQ accordion, custom post type with accordion, faq list, faq with accordion, jquery ui accordion, jquery-ui, shortcodes, wordpress, WordPress Plugin, Categories, social media, facebook, widget, widgets, statistics, AJAX, analytics, responsive
 
@@ -20,6 +20,15 @@
 
 ## Description ##
 A simple FAQ plugin that lets you create or your users FAQs, order FAQs, publicize FAQs, etc. It uses custom post types and taxonomies to manage an FAQ section for your site. Includes shortcode options for different display configurations.
+
+###FAQ KEY FEATURES###
+
+*Unlimited FAQs, with unlimited tag and category support
+*Create FAQ categories
+*Create FAQ posts and assign categories to them
+*An AJAX FAQ search form
+*Export all FAQs to a PDF to create a user manual
+*Insert custom CSS to style your FAQ posts
 
 ## Installation ##
 
