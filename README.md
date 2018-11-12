@@ -59,8 +59,12 @@ Each FAQ acts like a "post". You can assign your own categories or tags and orga
 
 ## Changelog ##
 
+### 2.0.0 ###
+* Visual Interface of admin panel has been updated.
+* Update CSS & JS panel
+
 ### 1.0.0 ###
-* No fundamental changes
+* Basic version
 
 ## Potential Enhancements ##
 * Got a bug? Something look off? Hit me up.
