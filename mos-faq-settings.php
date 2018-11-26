@@ -137,8 +137,26 @@ function mos_faq_admin_page () {
 	            <table class="form-table">
 	                <tbody>
 	                    <tr>
-	                        <th scope="row"><label for="mos_faq_body_pbg">Primary Background</label></th>
-	                        <td><input type="text" name="mos_faq_body_pbg" id="mos_faq_body_pbg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_body_pbg']; ?>" data-format="rgb" data-opacity="1"></td>
+	                        <th scope="row"><label for="mos_faq_body_pbg">Background</label></th>
+	                        <td>	                        	
+	                        	<div class="mos-row">
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_body_pbg" id="mos_faq_body_pbg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_body_pbg']; ?>" data-format="rgb" data-opacity="1" placeholder="Primary Background"/>
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_body_hbg" id="mos_faq_body_hbg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_body_hbg']; ?>" data-format="rgb" data-opacity="1" placeholder="Hover Background"/>
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_body_abg" id="mos_faq_body_abg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_body_abg']; ?>" data-format="rgb" data-opacity="1" placeholder="Active Background"/>
+				                        </div>
+		                        	</div>	                        		
+	                        	</div>
+	                        </td>
 	                    </tr>
 	                    <tr>
 	                        <th scope="row"><label>Font</label></th>
@@ -384,7 +402,29 @@ function mos_faq_admin_page () {
             <div id="mos-faq-icon" class="tab-con <?php if($active_tab == 'icon') echo 'active' ?>">
 	            <h3>Icon Styling</h3>	            
 	            <table class="form-table">
-	                <tbody>
+	                <tbody>	                    
+	                	<tr>
+	                        <th scope="row"><label for="mos_faq_icon_pbg">Background</label></th>
+	                        <td>	                        	
+	                        	<div class="mos-row">
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_icon_pbg" id="mos_faq_icon_pbg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_icon_pbg']; ?>" data-format="rgb" data-opacity="1" placeholder="Primary Background"/>
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_icon_hbg" id="mos_faq_icon_hbg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_icon_hbg']; ?>" data-format="rgb" data-opacity="1" placeholder="Hover Background"/>
+				                        </div>
+		                        	</div>
+		                        	<div class="mos-form-con">	  
+			                        	<div class="mos-form-group">                      		
+				                        	<input type="text" name="mos_faq_icon_abg" id="mos_faq_icon_abg" class="moscp" value="<?php echo @$mos_faq_option['mos_faq_icon_abg']; ?>" data-format="rgb" data-opacity="1" placeholder="Active Background"/>
+				                        </div>
+		                        	</div>	                        		
+	                        	</div>
+	                        </td>
+	                    </tr>
 	                    <tr>
 	                        <th scope="row"><label>Icon List</label></th>
 	                        <td>

@@ -211,6 +211,16 @@ function mos_faq_custom_script () {
 		border-radius: <?php echo $mos_faq_option['mos_faq_body_border_radius'] ?>px;
 		<?php endif; ?>
 	}
+	[id^="mos-faq-"].mos-faq-container .mos-faq-unit:hover {
+		<?php if ($mos_faq_option['mos_faq_body_hbg']) : ?>
+		background-color: <?php echo $mos_faq_option['mos_faq_body_hbg'] ?>;
+		<?php endif; ?>
+	}
+	[id^="mos-faq-"].mos-faq-container .mos-faq-unit.opened {
+		<?php if ($mos_faq_option['mos_faq_body_abg']) : ?>
+		background-color: <?php echo $mos_faq_option['mos_faq_body_abg'] ?>;
+		<?php endif; ?>		
+	}
 	[id^="mos-faq-"].mos-faq-container .mos-faq-title > a {
 		<?php if ($mos_faq_option['mos_faq_heading_font_pcolor']) : ?>
 		color: <?php echo $mos_faq_option['mos_faq_heading_font_pcolor'] ?>;
@@ -264,6 +274,9 @@ function mos_faq_custom_script () {
 		<?php endif; ?>	
 	}
 	[id^="mos-faq-"].mos-faq-container .mos-faq-title .mos-faq-icon-con {
+		<?php if ($mos_faq_option['mos_faq_icon_pbg']) : ?>
+		background-color: <?php echo $mos_faq_option['mos_faq_icon_pbg'] ?>;
+		<?php endif; ?>
 		<?php if ($mos_faq_option['mos_faq_icon_font_pcolor']) : ?>
 		color: <?php echo $mos_faq_option['mos_faq_icon_font_pcolor'] ?>;
 		<?php endif; ?>
@@ -300,11 +313,17 @@ function mos_faq_custom_script () {
 		<?php endif; ?>
 	}
 	[id^="mos-faq-"].mos-faq-container .mos-faq-unit:hover .mos-faq-title .mos-faq-icon-con {
+		<?php if ($mos_faq_option['mos_faq_icon_hbg']) : ?>
+		background-color: <?php echo $mos_faq_option['mos_faq_icon_hbg'] ?>;
+		<?php endif; ?>
 		<?php if ($mos_faq_option['mos_faq_icon_font_hcolor']) : ?>
 		color: <?php echo $mos_faq_option['mos_faq_icon_font_hcolor'] ?>;
 		<?php endif; ?>
 	}
 	[id^="mos-faq-"].mos-faq-container .mos-faq-unit.opened .mos-faq-title .mos-faq-icon-con {
+		<?php if ($mos_faq_option['mos_faq_icon_abg']) : ?>
+		background-color: <?php echo $mos_faq_option['mos_faq_icon_abg'] ?>;
+		<?php endif; ?>
 		<?php if ($mos_faq_option['mos_faq_icon_font_acolor']) : ?>
 		color: <?php echo $mos_faq_option['mos_faq_icon_font_acolor'] ?>;
 		<?php endif; ?>
