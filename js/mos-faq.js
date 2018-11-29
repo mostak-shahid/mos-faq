@@ -11,4 +11,14 @@ jQuery(document).ready(function($) {
 	    $(this).closest(".mos-faq-heading").siblings('.mos-faq-collapse').slideToggle("slow");
 	    $(this).closest(".mos-faq-unit").toggleClass("opened");
 	});
+	col_reset ();
+	$(window).resize( function (){
+		col_reset ();
+	});
+	function col_reset () {		
+		if ($(window).width() < 992) {
+			$('[id^="mos-faq-"] .mos-faq-unit').unwrap();
+			$('[id^="mos-faq-"]').wrapInner('<div class="mos-faq-col-2"></div>');
+		}
+	}
 });

@@ -60,6 +60,7 @@ function mos_faq_func( $atts = array(), $content = '' ) {
 		'container'			=> 0,
 		'container_class'	=> '',
 		'class'				=> '',
+		'grid'				=> 1,
 		'singular'			=> 0,
 		'pagination'		=> 0,
 		'view'				=> 'accordion', //accordion, collapsible, block
@@ -98,14 +99,19 @@ function mos_faq_func( $atts = array(), $content = '' ) {
 	if ($atts['orderby']) $args['orderby'] = $atts['orderby'];
 	if ($atts['order']) $args['order'] = $atts['order'];
 	if ($atts['author']) $args['author'] = $atts['author'];
+	if ($atts['grid'] > 5 ) $atts['grid'] = 5;
+	elseif ($atts['grid'] < 1 ) $atts['grid'] = 1;
 	// var_dump($args);
 	// die();
 
 	$query = new WP_Query( $args );
+	$total_post = $query->post_count;
+	$single_col = round( $total_post / $atts['grid'] );
 	if ( $query->have_posts() ) :
 		$idenfier = rand(10,1000);
 		$n = 0;
 		$html .= '<div id="mos-faq-'.$idenfier.'" class="mos-faq-'.$atts['view'].' mos-faq-container ' . $atts['container_class'] . '">';
+		$html .= '<div class="mos-faq-col-'.$atts['grid'] . '">';
 		while ( $query->have_posts() ) : $query->the_post();
 			
 			$html .= '<div class="mos-faq-unit ' . $atts['class'] . '">';
@@ -128,7 +134,9 @@ function mos_faq_func( $atts = array(), $content = '' ) {
 			$html .= '</div><!--/.mos-faq-unit-->';
 			$in = '';
 			$n++;
+			if ($n % $single_col == 0 AND $n < $total_post) $html .= '</div><!--/.mos-faq-col-'.$atts['grid'] . '-->' . '<div class="mos-faq-col-'.$atts['grid'] . '">';
 		endwhile;
+		$html .= '</div><!--/.mos-faq-col-'.$atts['grid'] . '-->';
 		$html .= '</div><!--/.mos-faq-container-->';
 		wp_reset_postdata();
 		if ($atts['pagination']) :
@@ -166,7 +174,7 @@ function mos_faq_admin_notice__success() {
 	if ($pagenow == 'edit.php' AND $typenow == 'qa') :
     ?>
     <div class="notice notice-success is-dismissible">
-        <p><strong>For using faqs in your post or page use this shortcode</strong><br />[mos_faq limit="-1/any_number" offset="0/any_number" category="blank/category ids seperate by ," tag="blank/category ids seperate by ," orderby="blank/DESC,ASC" order="blank/ID,author,title,name,type,date,modified,parent,rand,comment_count" author="1/any_number" container="1/0" container_class="blank/any_string" class="blank/any_string" singular="0/1" pagination="0/1" view="accordion/collapsible/block"]</p>
+        <p><strong>For using faqs in your post or page use this shortcode</strong><br />[mos_faq limit="-1/any_number" offset="0/any_number" category="blank/category ids seperate by ," tag="blank/category ids seperate by ," orderby="blank/DESC,ASC" order="blank/ID,author,title,name,type,date,modified,parent,rand,comment_count" author="1/any_number" container="1/0" container_class="blank/any_string" class="blank/any_string" singular="0/1" pagination="0/1" grid="1-5" view="accordion/collapsible/block"]</p>
     </div>
     <?php endif;
 }

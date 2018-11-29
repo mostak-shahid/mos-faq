@@ -124,6 +124,11 @@ function mos_faq_admin_page () {
 						<dd>(boolean) - Whether or not to include pagination.</dd>
 											
             			<dt>
+            				<tt>grid</tt>
+            			</dt>
+						<dd>(string) - Range from 1 to 5.</dd>
+											
+            			<dt>
             				<tt>view</tt>
             			</dt>
 						<dd>(string) - faq can be viewwd in like accordion, collapsible or block.</dd>
