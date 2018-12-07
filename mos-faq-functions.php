@@ -98,7 +98,7 @@ function mos_faq_func( $atts = array(), $content = '' ) {
 	}
 	if ($atts['orderby']) $args['orderby'] = $atts['orderby'];
 	if ($atts['order']) $args['order'] = $atts['order'];
-	if ($atts['author']) $args['author'] = $atts['author'];
+	if (@$atts['author']) $args['author'] = $atts['author'];
 	if ($atts['grid'] > 5 ) $atts['grid'] = 5;
 	elseif ($atts['grid'] < 1 ) $atts['grid'] = 1;
 	// var_dump($args);
