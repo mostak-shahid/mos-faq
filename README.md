@@ -43,6 +43,27 @@ A few extra seconds could have a huge impact on your ability to engage visitors 
 
 #### SHORTCODE ####
 
+	`[mos_faq]`
+
+This shortcode accepts a lot attributes, the attributes controls what to display and how to display your FAQs. Discription of attributes in short is given below
+
+* limit: (int) - number of post to show. Use 'limit'=>-1 to show all FAQs (the 'offset' parameter is ignored with a -1 value).
+* offset: (int) - number of post to displace or pass over. The 'offset' parameter is ignored when 'limit'=>-1 (show all FAQs) is used.
+* category (string) - category ids seperate by `,`
+* tag (string) - tag ids seperate by `,`
+* order (string) - Designates the ascending or descending order of the 'orderby' parameter. Defaults to 'DESC'. An array can be used for multiple order/orderby sets.
+	1. 'ASC' - ascending order from lowest to highest values (1, 2, 3; a, b, c).
+	2. 'DESC' - descending order from highest to lowest values (3, 2, 1; c, b, a).
+* orderby (string) - Sort retrieved posts by parameter. Defaults to 'date (post_date)'. One of ID, author, title, name, type, date, modified, parent, rand, comment_count these options can be passed.
+* author (int | string) - use author id or comma-separated list of IDs.
+* container (string) - Whether to wrap the FAQs section, and what to wrap it with. Default 'div'.
+* container_class (string) - Class that is applied to the container.
+* class (string) - CSS class to use for the container of FAQs.
+* view (string) - One of accordion, collapsible, and block these options can be passed.
+* grid (int) - One of 1, 2, 3, 4, and 5 these options can be passed.
+* pagination (int) - If necessary then use `1` if not then leave this attribute or use `0`.
+* singular (int) - If necessary then use `1` if not then leave this attribute or use `0`.
+
 
 
 ## Installation ##

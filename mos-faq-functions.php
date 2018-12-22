@@ -129,6 +129,7 @@ function mos_faq_func( $atts = array(), $content = '' ) {
 					$html .= '<div class="mos-faq-body">';
 						$html .= mos_faq_get_the_content_with_formatting();
 						//$html .= get_the_content();
+						if ($atts['singular']) $html = '<a href="'.get_the_permalink().'">Details</a>';
 					$html .= '</div>';
 				if ($atts['view'] != 'block') $html .= '</div>';				
 			$html .= '</div><!--/.mos-faq-unit-->';
@@ -174,7 +175,7 @@ function mos_faq_admin_notice__success() {
 	if ($pagenow == 'edit.php' AND $typenow == 'qa') :
     ?>
     <div class="notice notice-success is-dismissible">
-        <p><strong>For using faqs in your post or page use this shortcode</strong><br />[mos_faq limit="-1/any_number" offset="0/any_number" category="blank/category ids seperate by ," tag="blank/category ids seperate by ," orderby="blank/DESC,ASC" order="blank/ID,author,title,name,type,date,modified,parent,rand,comment_count" author="1/any_number" container="1/0" container_class="blank/any_string" class="blank/any_string" singular="0/1" pagination="0/1" grid="1-5" view="accordion/collapsible/block"]</p>
+        <p><strong>For using faqs in your post or page use this shortcode</strong><br />[mos_faq limit="-1/any_number" offset="0/any_number" category="blank/category ids seperate by ," tag="blank/category ids seperate by ," order="blank/DESC,ASC" orderby="blank/ID,author,title,name,type,date,modified,parent,rand,comment_count" author="1/any_number" container="1/0" container_class="blank/any_string" class="blank/any_string" singular="0/1" pagination="0/1" grid="1-5" view="accordion/collapsible/block"]</p>
     </div>
     <?php endif;
 }
