@@ -19,7 +19,7 @@
 
 
 ## Description ##
-A simple FAQ plugin that lets you create or your users FAQs, order FAQs, publicize FAQs, etc. It uses custom post types and taxonomies to manage an FAQ section for your site. Includes shortcode options for different display configurations.
+A simple FAQ plugin that lets you create FAQs, order FAQs, publicize FAQs, etc. It uses custom post types and taxonomies to manage an FAQ section for your site. You can display your every FAQ section in 3 different ways **accordion**, **collapsible**, and **block** view. Includes shortcode options for different display configurations.
 
 #### FAQ KEY FEATURES ####
 
@@ -27,8 +27,13 @@ A simple FAQ plugin that lets you create or your users FAQs, order FAQs, publici
 * Create FAQ categories and tags
 * Create FAQ posts and assign categories and tags to them
 * Easy design layout to style your FAQ posts
+* Responsive FAQ design that looks great on all screen sizes
 * For advanced user additional CSS and JS input panel for adding custom scripts
 * And the most important thing it will not add any additional time on your page load time
+
+`[mos_faq]`
+
+Simply insert the above shortcode into any page to display your FAQs.
 
 ## Installation ##
 
