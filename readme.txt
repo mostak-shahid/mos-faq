@@ -9,8 +9,7 @@ Stable tag: 2.0.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Short description of this great plugin. No more than 150 characters, no markup.
-Link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
+Mos FAQs plugin that lets you easily create, order and publicize FAQs using shortcodes.
 
 == Description ==
 A simple FAQ plugin that lets you create FAQs, order FAQs, publicize FAQs, etc. It uses custom post types and taxonomies to manage an FAQ section for your site. You can display your every FAQ section in 3 different ways accordion, collapsible, and block view. Includes shortcode options for different display configurations.
