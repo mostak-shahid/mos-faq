@@ -35,6 +35,16 @@ A simple FAQ plugin that lets you create FAQs, order FAQs, publicize FAQs, etc. 
 
 Simply insert the above shortcode into any page to display your FAQs.
 
+Mos FAQs can do more than just FAQs. If you have a help desk or knowledge base and need to pass on information to your visitors and/or users, the question/answer formatting is perfect. With the various options related to toggling, as well as the custom fields functionality, you can easily create an in-depth knowledge base and help desk.
+
+Mos FAQs has a responsive design that makes your FAQs look good on all screen sizes and all devices. No more worrying about what your mobile FAQs might look like. All options and styling will be applied accross all devices, so you can focus on your content.
+
+A few extra seconds could have a huge impact on your ability to engage visitors and make sales. This means that having a fast site is essential — not just for ranking well with Google, but for keeping your bottom-line profits high. So losing page speed for a plugin is a very pain full experience, by default Mos FAQs plugin fully optimized and it will not add any additonal load into your website.
+
+#### SHORTCODE ####
+
+
+
 ## Installation ##
 
 This section describes how to install the plugin and get it working.
