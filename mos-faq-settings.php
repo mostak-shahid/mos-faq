@@ -1,6 +1,6 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == "POST" ) {  
-    if ($_POST['mos_faq_submit'] == 'Save Changes') {
+if ($_SERVER['REQUEST_METHOD'] == "POST" AND @$_POST['mos_faq_submit'] == 'Save Changes') {  
+
 	    $mos_faq_option = array();
 		// foreach ($_POST as $field => $value) {
 	    // 	$mos_faq_option[$field] = trim($value);
@@ -224,7 +224,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" ) {
 	    	$mos_faq_option['mos_faq_js'] = sanitize_text_field($_POST['mos_faq_js']);
 	    }	    
 	    update_option( 'mos_faq_option', $mos_faq_option, false );
-	}
+
 }
 
 
