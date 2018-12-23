@@ -40,8 +40,6 @@ function mos_faq_enqueue_scripts(){
 	}
 	wp_enqueue_style( 'mos-faq.min', plugins_url( 'css/mos-faq.min.css', __FILE__ ) );
 	wp_enqueue_script( 'mos-faq.min', plugins_url( 'js/mos-faq.min.js', __FILE__ ), array('jquery') );
-
-
 }
 add_action( 'wp_enqueue_scripts', 'mos_faq_enqueue_scripts' );
 function mos_faq_func( $atts = array(), $content = '' ) {
