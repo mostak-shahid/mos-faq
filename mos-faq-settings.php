@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == "POST" AND @$_POST['mos_faq_submit'] == 'Save Changes') {  
+if (isset($_POST['mos_faq_submit']) AND $_POST['mos_faq_submit'] == 'Save Changes') {  
 
 	    $mos_faq_option = array();
 		// foreach ($_POST as $field => $value) {
