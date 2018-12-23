@@ -2,21 +2,230 @@
 if ($_SERVER['REQUEST_METHOD'] == "POST" ) {  
     if ($_POST['mos_faq_submit'] == 'Save Changes') {
 	    $mos_faq_option = array();
-	    if (isset ($_POST['mos_faq_body_pbg']) AND !empty ($_POST['mos_faq_body_pbg'])) {
-	    	$mos_faq_option['mos_faq_body_pbg'] = sanitize_text_field($_POST['mos_faq_body_pbg']);
-	    }
-	    if (isset ($_POST['mos_faq_body_hbg']) AND !empty ($_POST['mos_faq_body_hbg'])) {
-	    	$mos_faq_option['mos_faq_body_hbg'] = sanitize_text_field($_POST['mos_faq_body_hbg']);
-	    }
-	    if (isset ($_POST['mos_faq_body_abg']) AND !empty ($_POST['mos_faq_body_abg'])) {
-	    	$mos_faq_option['mos_faq_body_abg'] = sanitize_text_field($_POST['mos_faq_body_abg']);
-	    }
-	    // foreach ($_POST as $field => $value) {
+		// foreach ($_POST as $field => $value) {
 	    // 	$mos_faq_option[$field] = trim($value);
 	    // }
+	    $color_pat = '/^(\#[\da-f]{3}|\#[\da-f]{6}|rgba\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)(,\s*(0\.\d+|1))\)|hsla\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)(,\s*(0\.\d+|1))\)|rgb\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)|hsl\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)\))$/';
+	    $number_pat = '/^[0-9]$/';
+	    $alpnumber_pat = '/^[a-zA-Z0-9 ]$/';
+	    $alpha_pat = '/^[a-zA-Z ]$/';
+	    if (isset ($_POST['mos_faq_body_pbg']) AND !empty ($_POST['mos_faq_body_pbg']) AND preg_match($color_pat, $_POST['mos_faq_body_pbg'])) {
+	    	$mos_faq_option['mos_faq_body_pbg'] = sanitize_text_field($_POST['mos_faq_body_pbg']);
+	    }
+	    if (isset ($_POST['mos_faq_body_hbg']) AND !empty ($_POST['mos_faq_body_hbg']) AND preg_match($color_pat, $_POST['mos_faq_body_hbg'])) {
+	    	$mos_faq_option['mos_faq_body_hbg'] = sanitize_text_field($_POST['mos_faq_body_hbg']);
+	    }
+	    if (isset ($_POST['mos_faq_body_abg']) AND !empty ($_POST['mos_faq_body_abg']) AND preg_match($color_pat, $_POST['mos_faq_body_abg'])) {
+	    	$mos_faq_option['mos_faq_body_abg'] = sanitize_text_field($_POST['mos_faq_body_abg']);
+	    }
+	    if (isset ($_POST['mos_faq_body_font_size']) AND !empty ($_POST['mos_faq_body_font_size']) AND preg_match($number_pat, $_POST['mos_faq_body_font_size'])) {
+	    	$mos_faq_option['mos_faq_body_font_size'] = sanitize_text_field($_POST['mos_faq_body_font_size']);
+	    }
+	    if (isset ($_POST['mos_faq_body_font_height']) AND !empty ($_POST['mos_faq_body_font_height']) AND preg_match($number_pat, $_POST['mos_faq_body_font_height'])) {
+	    	$mos_faq_option['mos_faq_body_font_height'] = sanitize_text_field($_POST['mos_faq_body_font_height']);
+	    }
+	    if (isset ($_POST['mos_faq_body_font_align']) AND !empty ($_POST['mos_faq_body_font_align']) AND preg_match($alpha_pat, $_POST['mos_faq_body_font_align'])) {
+	    	$mos_faq_option['mos_faq_body_font_align'] = sanitize_text_field($_POST['mos_faq_body_font_align']);
+	    }
+	    if (isset ($_POST['mos_faq_body_font_weight']) AND !empty ($_POST['mos_faq_body_font_weight']) AND preg_match($number_pat, $_POST['mos_faq_body_font_weight'])) {
+	    	$mos_faq_option['mos_faq_body_font_weight'] = sanitize_text_field($_POST['mos_faq_body_font_weight']);
+	    }
+	    if (isset ($_POST['mos_faq_body_font_color']) AND !empty ($_POST['mos_faq_body_font_color']) AND preg_match($color_pat, $_POST['mos_faq_body_font_color'])) {
+	    	$mos_faq_option['mos_faq_body_font_color'] = sanitize_text_field($_POST['mos_faq_body_font_color']);
+	    }
+	    if (isset ($_POST['mos_faq_body_measurements_padding']) AND !empty ($_POST['mos_faq_body_measurements_padding']) AND preg_match($alpnumber_pat, $_POST['mos_faq_body_measurements_padding'])) {
+	    	$mos_faq_option['mos_faq_body_measurements_padding'] = sanitize_text_field($_POST['mos_faq_body_measurements_padding']);
+	    }
+	    if (isset ($_POST['mos_faq_body_measurements_margin']) AND !empty ($_POST['mos_faq_body_measurements_margin']) AND preg_match($alpnumber_pat, $_POST['mos_faq_body_measurements_margin'])) {
+	    	$mos_faq_option['mos_faq_body_measurements_margin'] = sanitize_text_field($_POST['mos_faq_body_measurements_margin']);
+	    }
+	    if (isset ($_POST['mos_faq_body_border_width']) AND !empty ($_POST['mos_faq_body_border_width']) AND preg_match($number_pat, $_POST['mos_faq_body_border_width'])) {
+	    	$mos_faq_option['mos_faq_body_border_width'] = sanitize_text_field($_POST['mos_faq_body_border_width']);
+	    }
+	    if (isset ($_POST['mos_faq_body_border_style']) AND !empty ($_POST['mos_faq_body_border_style']) AND preg_match($alpha_pat, $_POST['mos_faq_body_border_style'])) {
+	    	$mos_faq_option['mos_faq_body_border_style'] = sanitize_text_field($_POST['mos_faq_body_border_style']);
+	    }
+	    if (isset ($_POST['mos_faq_body_border_color']) AND !empty ($_POST['mos_faq_body_border_color']) AND preg_match($color_pat, $_POST['mos_faq_body_border_color'])) {
+	    	$mos_faq_option['mos_faq_body_border_color'] = sanitize_text_field($_POST['mos_faq_body_border_color']);
+	    }
+	    if (isset ($_POST['mos_faq_body_border_radius']) AND !empty ($_POST['mos_faq_body_border_radius']) AND preg_match($number_pat, $_POST['mos_faq_body_border_radius'])) {
+	    	$mos_faq_option['mos_faq_body_border_radius'] = sanitize_text_field($_POST['mos_faq_body_border_radius']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_pbg']) AND !empty ($_POST['mos_faq_heading_pbg']) AND preg_match($color_pat, $_POST['mos_faq_heading_pbg'])) {
+	    	$mos_faq_option['mos_faq_heading_pbg'] = sanitize_text_field($_POST['mos_faq_heading_pbg']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_hbg']) AND !empty ($_POST['mos_faq_heading_hbg']) AND preg_match($color_pat, $_POST['mos_faq_heading_hbg'])) {
+	    	$mos_faq_option['mos_faq_heading_hbg'] = sanitize_text_field($_POST['mos_faq_heading_hbg']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_abg']) AND !empty ($_POST['mos_faq_heading_abg']) AND preg_match($color_pat, $_POST['mos_faq_heading_abg'])) {
+	    	$mos_faq_option['mos_faq_heading_abg'] = sanitize_text_field($_POST['mos_faq_heading_abg']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_font_size']) AND !empty ($_POST['mos_faq_heading_font_size']) AND preg_match($number_pat, $_POST['mos_faq_heading_font_size'])) {
+	    	$mos_faq_option['mos_faq_heading_font_size'] = sanitize_text_field($_POST['mos_faq_heading_font_size']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_font_height']) AND !empty ($_POST['mos_faq_heading_font_height']) AND preg_match($number_pat, $_POST['mos_faq_heading_font_height'])) {
+	    	$mos_faq_option['mos_faq_heading_font_height'] = sanitize_text_field($_POST['mos_faq_heading_font_height']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_font_align']) AND !empty ($_POST['mos_faq_heading_font_align']) AND preg_match($alpha_pat, $_POST['mos_faq_heading_font_align'])) {
+	    	$mos_faq_option['mos_faq_heading_font_align'] = sanitize_text_field($_POST['mos_faq_heading_font_align']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_font_weight']) AND !empty ($_POST['mos_faq_heading_font_weight']) AND preg_match($number_pat, $_POST['mos_faq_heading_font_weight'])) {
+	    	$mos_faq_option['mos_faq_heading_font_weight'] = sanitize_text_field($_POST['mos_faq_heading_font_weight']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_font_pcolor']) AND !empty ($_POST['mos_faq_heading_font_pcolor']) AND preg_match($color_pat, $_POST['mos_faq_heading_font_pcolor'])) {
+	    	$mos_faq_option['mos_faq_heading_font_pcolor'] = sanitize_text_field($_POST['mos_faq_heading_font_pcolor']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_font_hcolor']) AND !empty ($_POST['mos_faq_heading_font_hcolor']) AND preg_match($color_pat, $_POST['mos_faq_heading_font_hcolor'])) {
+	    	$mos_faq_option['mos_faq_heading_font_hcolor'] = sanitize_text_field($_POST['mos_faq_heading_font_hcolor']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_font_acolor']) AND !empty ($_POST['mos_faq_heading_font_acolor']) AND preg_match($color_pat, $_POST['mos_faq_heading_font_acolor'])) {
+	    	$mos_faq_option['mos_faq_heading_font_acolor'] = sanitize_text_field($_POST['mos_faq_heading_font_acolor']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_measurements_padding']) AND !empty ($_POST['mos_faq_heading_measurements_padding']) AND preg_match($number_pat, $_POST['mos_faq_heading_measurements_padding'])) {
+	    	$mos_faq_option['mos_faq_heading_measurements_padding'] = sanitize_text_field($_POST['mos_faq_heading_measurements_padding']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_measurements_margin']) AND !empty ($_POST['mos_faq_heading_measurements_margin']) AND preg_match($number_pat, $_POST['mos_faq_heading_measurements_margin'])) {
+	    	$mos_faq_option['mos_faq_heading_measurements_margin'] = sanitize_text_field($_POST['mos_faq_heading_measurements_margin']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_border_width']) AND !empty ($_POST['mos_faq_heading_border_width']) AND preg_match($number_pat, $_POST['mos_faq_heading_border_width'])) {
+	    	$mos_faq_option['mos_faq_heading_border_width'] = sanitize_text_field($_POST['mos_faq_heading_border_width']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_border_style']) AND !empty ($_POST['mos_faq_heading_border_style']) AND preg_match($alpha_pat, $_POST['mos_faq_heading_border_style'])) {
+	    	$mos_faq_option['mos_faq_heading_border_style'] = sanitize_text_field($_POST['mos_faq_heading_border_style']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_border_color']) AND !empty ($_POST['mos_faq_heading_border_color']) AND preg_match($color_pat, $_POST['mos_faq_heading_border_color'])) {
+	    	$mos_faq_option['mos_faq_heading_border_color'] = sanitize_text_field($_POST['mos_faq_heading_border_color']);
+	    }
+	    if (isset ($_POST['mos_faq_heading_border_radius']) AND !empty ($_POST['mos_faq_heading_border_radius']) AND preg_match($number_pat, $_POST['mos_faq_heading_border_radius'])) {
+	    	$mos_faq_option['mos_faq_heading_border_radius'] = sanitize_text_field($_POST['mos_faq_heading_border_radius']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_pbg']) AND !empty ($_POST['mos_faq_icon_pbg']) AND preg_match($color_pat, $_POST['mos_faq_icon_pbg'])) {
+	    	$mos_faq_option['mos_faq_icon_pbg'] = sanitize_text_field($_POST['mos_faq_icon_pbg']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_hbg']) AND !empty ($_POST['mos_faq_icon_hbg']) AND preg_match($color_pat, $_POST['mos_faq_icon_hbg'])) {
+	    	$mos_faq_option['mos_faq_icon_hbg'] = sanitize_text_field($_POST['mos_faq_icon_hbg']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_abg']) AND !empty ($_POST['mos_faq_icon_abg']) AND preg_match($color_pat, $_POST['mos_faq_icon_abg'])) {
+	    	$mos_faq_option['mos_faq_icon_abg'] = sanitize_text_field($_POST['mos_faq_icon_abg']);
+	    }
+	    if (isset ($_POST['mos_faq_icon']) AND !empty ($_POST['mos_faq_icon']) AND preg_match($alpha_pat, $_POST['mos_faq_icon'])) {
+	    	$mos_faq_option['mos_faq_icon'] = sanitize_text_field($_POST['mos_faq_icon']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_font_size']) AND !empty ($_POST['mos_faq_icon_font_size']) AND preg_match($number_pat, $_POST['mos_faq_icon_font_size'])) {
+	    	$mos_faq_option['mos_faq_icon_font_size'] = sanitize_text_field($_POST['mos_faq_icon_font_size']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_font_height']) AND !empty ($_POST['mos_faq_icon_font_height']) AND preg_match($number_pat, $_POST['mos_faq_icon_font_height'])) {
+	    	$mos_faq_option['mos_faq_icon_font_height'] = sanitize_text_field($_POST['mos_faq_icon_font_height']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_font_align']) AND !empty ($_POST['mos_faq_icon_font_align']) AND preg_match($alpha_pat, $_POST['mos_faq_icon_font_align'])) {
+	    	$mos_faq_option['mos_faq_icon_font_align'] = sanitize_text_field($_POST['mos_faq_icon_font_align']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_font_weight']) AND !empty ($_POST['mos_faq_icon_font_weight']) AND preg_match($number_pat, $_POST['mos_faq_icon_font_weight'])) {
+	    	$mos_faq_option['mos_faq_icon_font_weight'] = sanitize_text_field($_POST['mos_faq_icon_font_weight']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_font_pcolor']) AND !empty ($_POST['mos_faq_icon_font_pcolor']) AND preg_match($color_pat, $_POST['mos_faq_icon_font_pcolor'])) {
+	    	$mos_faq_option['mos_faq_icon_font_pcolor'] = sanitize_text_field($_POST['mos_faq_icon_font_pcolor']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_font_hcolor']) AND !empty ($_POST['mos_faq_icon_font_hcolor']) AND preg_match($color_pat, $_POST['mos_faq_icon_font_hcolor'])) {
+	    	$mos_faq_option['mos_faq_icon_font_hcolor'] = sanitize_text_field($_POST['mos_faq_icon_font_hcolor']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_font_acolor']) AND !empty ($_POST['mos_faq_icon_font_acolor']) AND preg_match($color_pat, $_POST['mos_faq_icon_font_acolor'])) {
+	    	$mos_faq_option['mos_faq_icon_font_acolor'] = sanitize_text_field($_POST['mos_faq_icon_font_acolor']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_measurements_width']) AND !empty ($_POST['mos_faq_icon_measurements_width']) AND preg_match($number_pat, $_POST['mos_faq_icon_measurements_width'])) {
+	    	$mos_faq_option['mos_faq_icon_measurements_width'] = sanitize_text_field($_POST['mos_faq_icon_measurements_width']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_measurements_padding']) AND !empty ($_POST['mos_faq_icon_measurements_padding']) AND preg_match($alpnumber_pat, $_POST['mos_faq_icon_measurements_padding'])) {
+	    	$mos_faq_option['mos_faq_icon_measurements_padding'] = sanitize_text_field($_POST['mos_faq_icon_measurements_padding']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_measurements_margin']) AND !empty ($_POST['mos_faq_icon_measurements_margin']) AND preg_match($alpnumber_pat, $_POST['mos_faq_icon_measurements_margin'])) {
+	    	$mos_faq_option['mos_faq_icon_measurements_margin'] = sanitize_text_field($_POST['mos_faq_icon_measurements_margin']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_border_width']) AND !empty ($_POST['mos_faq_icon_border_width']) AND preg_match($number_pat, $_POST['mos_faq_icon_border_width'])) {
+	    	$mos_faq_option['mos_faq_icon_border_width'] = sanitize_text_field($_POST['mos_faq_icon_border_width']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_border_style']) AND !empty ($_POST['mos_faq_icon_border_style']) AND preg_match($alpha_pat, $_POST['mos_faq_icon_border_style'])) {
+	    	$mos_faq_option['mos_faq_icon_border_style'] = sanitize_text_field($_POST['mos_faq_icon_border_style']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_border_color']) AND !empty ($_POST['mos_faq_icon_border_color']) AND preg_match($color_pat, $_POST['mos_faq_icon_border_color'])) {
+	    	$mos_faq_option['mos_faq_icon_border_color'] = sanitize_text_field($_POST['mos_faq_icon_border_color']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_border_radius']) AND !empty ($_POST['mos_faq_icon_border_radius']) AND preg_match($number_pat, $_POST['mos_faq_icon_border_radius'])) {
+	    	$mos_faq_option['mos_faq_icon_border_radius'] = sanitize_text_field($_POST['mos_faq_icon_border_radius']);
+	    }
+	    if (isset ($_POST['mos_faq_icon_border_radius']) AND !empty ($_POST['mos_faq_icon_border_radius']) AND preg_match($number_pat, $_POST['mos_faq_icon_border_radius'])) {
+	    	$mos_faq_option['mos_faq_icon_border_radius'] = sanitize_text_field($_POST['mos_faq_icon_border_radius']);
+	    }
+	    if (isset ($_POST['mos_faq_content_pbg']) AND !empty ($_POST['mos_faq_content_pbg']) AND preg_match($color_pat, $_POST['mos_faq_content_pbg'])) {
+	    	$mos_faq_option['mos_faq_content_pbg'] = sanitize_text_field($_POST['mos_faq_content_pbg']);
+	    }
+	    if (isset ($_POST['mos_faq_content_hbg']) AND !empty ($_POST['mos_faq_content_hbg']) AND preg_match($color_pat, $_POST['mos_faq_content_hbg'])) {
+	    	$mos_faq_option['mos_faq_content_hbg'] = sanitize_text_field($_POST['mos_faq_content_hbg']);
+	    }
+	    if (isset ($_POST['mos_faq_content_abg']) AND !empty ($_POST['mos_faq_content_abg']) AND preg_match($color_pat, $_POST['mos_faq_content_abg'])) {
+	    	$mos_faq_option['mos_faq_content_abg'] = sanitize_text_field($_POST['mos_faq_content_abg']);
+	    }
+	    if (isset ($_POST['mos_faq_content_abg']) AND !empty ($_POST['mos_faq_content_abg']) AND preg_match($color_pat, $_POST['mos_faq_content_abg'])) {
+	    	$mos_faq_option['mos_faq_content_abg'] = sanitize_text_field($_POST['mos_faq_content_abg']);
+	    }
+	    if (isset ($_POST['mos_faq_content_font_size']) AND !empty ($_POST['mos_faq_content_font_size']) AND preg_match($number_pat, $_POST['mos_faq_content_font_size'])) {
+	    	$mos_faq_option['mos_faq_content_font_size'] = sanitize_text_field($_POST['mos_faq_content_font_size']);
+	    }
+	    if (isset ($_POST['mos_faq_content_font_height']) AND !empty ($_POST['mos_faq_content_font_height']) AND preg_match($number_pat, $_POST['mos_faq_content_font_height'])) {
+	    	$mos_faq_option['mos_faq_content_font_height'] = sanitize_text_field($_POST['mos_faq_content_font_height']);
+	    }
+	    if (isset ($_POST['mos_faq_content_font_align']) AND !empty ($_POST['mos_faq_content_font_align']) AND preg_match($alpha_pat, $_POST['mos_faq_content_font_align'])) {
+	    	$mos_faq_option['mos_faq_content_font_align'] = sanitize_text_field($_POST['mos_faq_content_font_align']);
+	    }
+	    if (isset ($_POST['mos_faq_content_font_weight']) AND !empty ($_POST['mos_faq_content_font_weight']) AND preg_match($number_pat, $_POST['mos_faq_content_font_weight'])) {
+	    	$mos_faq_option['mos_faq_content_font_weight'] = sanitize_text_field($_POST['mos_faq_content_font_weight']);
+	    }
+	    if (isset ($_POST['mos_faq_content_font_weight']) AND !empty ($_POST['mos_faq_content_font_weight']) AND preg_match($number_pat, $_POST['mos_faq_content_font_weight'])) {
+	    	$mos_faq_option['mos_faq_content_font_weight'] = sanitize_text_field($_POST['mos_faq_content_font_weight']);
+	    }
+	    if (isset ($_POST['mos_faq_content_font_pcolor']) AND !empty ($_POST['mos_faq_content_font_pcolor']) AND preg_match($color_pat, $_POST['mos_faq_content_font_pcolor'])) {
+	    	$mos_faq_option['mos_faq_content_font_pcolor'] = sanitize_text_field($_POST['mos_faq_content_font_pcolor']);
+	    }
+	    if (isset ($_POST['mos_faq_content_font_hcolor']) AND !empty ($_POST['mos_faq_content_font_hcolor']) AND preg_match($color_pat, $_POST['mos_faq_content_font_hcolor'])) {
+	    	$mos_faq_option['mos_faq_content_font_hcolor'] = sanitize_text_field($_POST['mos_faq_content_font_hcolor']);
+	    }
+	    if (isset ($_POST['mos_faq_content_font_acolor']) AND !empty ($_POST['mos_faq_content_font_acolor']) AND preg_match($color_pat, $_POST['mos_faq_content_font_acolor'])) {
+	    	$mos_faq_option['mos_faq_content_font_acolor'] = sanitize_text_field($_POST['mos_faq_content_font_acolor']);
+	    }
+	    if (isset ($_POST['mos_faq_content_measurements_padding']) AND !empty ($_POST['mos_faq_content_measurements_padding']) AND preg_match($alpnumber_pat, $_POST['mos_faq_content_measurements_padding'])) {
+	    	$mos_faq_option['mos_faq_content_measurements_padding'] = sanitize_text_field($_POST['mos_faq_content_measurements_padding']);
+	    }
+	    if (isset ($_POST['mos_faq_content_measurements_margin']) AND !empty ($_POST['mos_faq_content_measurements_margin']) AND preg_match($alpnumber_pat, $_POST['mos_faq_content_measurements_margin'])) {
+	    	$mos_faq_option['mos_faq_content_measurements_margin'] = sanitize_text_field($_POST['mos_faq_content_measurements_margin']);
+	    }
+	    if (isset ($_POST['mos_faq_content_border_width']) AND !empty ($_POST['mos_faq_content_border_width']) AND preg_match($number_pat, $_POST['mos_faq_content_border_width'])) {
+	    	$mos_faq_option['mos_faq_content_border_width'] = sanitize_text_field($_POST['mos_faq_content_border_width']);
+	    }
+	    if (isset ($_POST['mos_faq_content_border_style']) AND !empty ($_POST['mos_faq_content_border_style']) AND preg_match($alpha_pat, $_POST['mos_faq_content_border_style'])) {
+	    	$mos_faq_option['mos_faq_content_border_style'] = sanitize_text_field($_POST['mos_faq_content_border_style']);
+	    }
+	    if (isset ($_POST['mos_faq_content_border_color']) AND !empty ($_POST['mos_faq_content_border_color']) AND preg_match($color_pat, $_POST['mos_faq_content_border_color'])) {
+	    	$mos_faq_option['mos_faq_content_border_color'] = sanitize_text_field($_POST['mos_faq_content_border_color']);
+	    }
+	    if (isset ($_POST['mos_faq_content_border_radius']) AND !empty ($_POST['mos_faq_content_border_radius']) AND preg_match($number_pat, $_POST['mos_faq_content_border_radius'])) {
+	    	$mos_faq_option['mos_faq_content_border_radius'] = sanitize_text_field($_POST['mos_faq_content_border_radius']);
+	    }
+	    if (isset ($_POST['mos_faq_fontawesome']) AND !empty ($_POST['mos_faq_fontawesome']) AND preg_match($number_pat, $_POST['mos_faq_fontawesome'])) {
+	    	$mos_faq_option['mos_faq_fontawesome'] = sanitize_text_field($_POST['mos_faq_fontawesome']);
+	    }
+	    if (isset ($_POST['mos_faq_jquery']) AND !empty ($_POST['mos_faq_jquery']) AND preg_match($number_pat, $_POST['mos_faq_jquery'])) {
+	    	$mos_faq_option['mos_faq_jquery'] = sanitize_text_field($_POST['mos_faq_jquery']);
+	    }
+	    if (isset ($_POST['mos_faq_css']) AND !empty ($_POST['mos_faq_css'])) {
+	    	$mos_faq_option['mos_faq_css'] = sanitize_text_field($_POST['mos_faq_css']);
+	    }
+	    if (isset ($_POST['mos_faq_js']) AND !empty ($_POST['mos_faq_js'])) {
+	    	$mos_faq_option['mos_faq_js'] = sanitize_text_field($_POST['mos_faq_js']);
+	    }	    
 	    update_option( 'mos_faq_option', $mos_faq_option, false );
 	}
 }
+
 
 function mos_faq_admin_menu () {
     add_submenu_page( 'edit.php?post_type=qa', 'Mos FAQ Settings', 'Settings', 'manage_options', 'faq_settings', 'mos_faq_admin_page' );
@@ -43,7 +252,6 @@ function mos_faq_admin_page () {
             <li class="tab-nav <?php if($active_tab == 'advanced') echo 'active';?>"><a data-id="advanced" href="?post_type=qa&page=faq_settings&tab=advanced">Advanced CSS, JS</a></li>
         </ul>
         <form method="post">
-
         	<div id="mos-faq-dashboard" class="tab-con <?php if($active_tab == 'dashboard') echo 'active' ?>">
             	<h2>Dashboard</h2>
             	<div class="desc">
@@ -145,7 +353,6 @@ function mos_faq_admin_page () {
             		<!--  view="accordion/collapsible/block" -->
             	</div>
             </div>
-
         	<div id="mos-faq-body" class="tab-con <?php if($active_tab == 'body') echo 'active' ?>">
 	            <h3>Body Styling</h3>
 	            <table class="form-table">
@@ -271,7 +478,6 @@ function mos_faq_admin_page () {
 	                </tbody>
 	            </table>
             </div>
-
         	<div id="mos-faq-heading" class="tab-con <?php if($active_tab == 'heading') echo 'active' ?>">
 	            <h3>Heading Styling</h3>
 	            <table class="form-table">
@@ -569,7 +775,6 @@ function mos_faq_admin_page () {
 	                </tbody>
 	            </table>
 	        </div>
-
         	<div id="mos-faq-content" class="tab-con <?php if($active_tab == 'content') echo 'active' ?>">
 	            <h3>Content Styling</h3>
 	            <table class="form-table">
@@ -710,8 +915,7 @@ function mos_faq_admin_page () {
 
 	                </tbody>
 	            </table>
-            </div>
-        
+            </div>        
         	<div id="mos-faq-advanced" class="tab-con <?php if($active_tab == 'advanced') echo 'active' ?>">
 	            <h3>Advanced Styling</h3>
 	            <table class="form-table">
