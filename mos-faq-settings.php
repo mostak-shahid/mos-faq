@@ -2,9 +2,18 @@
 if ($_SERVER['REQUEST_METHOD'] == "POST" ) {  
     if ($_POST['mos_faq_submit'] == 'Save Changes') {
 	    $mos_faq_option = array();
-	    foreach ($_POST as $field => $value) {
-	    	$mos_faq_option[$field] = trim($value);
+	    if (isset ($_POST['mos_faq_body_pbg']) AND !empty ($_POST['mos_faq_body_pbg'])) {
+	    	$mos_faq_option['mos_faq_body_pbg'] = sanitize_text_field($_POST['mos_faq_body_pbg']);
 	    }
+	    if (isset ($_POST['mos_faq_body_hbg']) AND !empty ($_POST['mos_faq_body_hbg'])) {
+	    	$mos_faq_option['mos_faq_body_hbg'] = sanitize_text_field($_POST['mos_faq_body_hbg']);
+	    }
+	    if (isset ($_POST['mos_faq_body_abg']) AND !empty ($_POST['mos_faq_body_abg'])) {
+	    	$mos_faq_option['mos_faq_body_abg'] = sanitize_text_field($_POST['mos_faq_body_abg']);
+	    }
+	    // foreach ($_POST as $field => $value) {
+	    // 	$mos_faq_option[$field] = trim($value);
+	    // }
 	    update_option( 'mos_faq_option', $mos_faq_option, false );
 	}
 }
