@@ -4,6 +4,9 @@ function mos_faq_settings_init() {
 	add_settings_section('mos_faq_section_top_nav', '', 'mos_faq_section_top_nav_cb', 'mos_faq');
 	add_settings_section('mos_faq_section_dash_start', '', 'mos_faq_section_dash_start_cb', 'mos_faq');
 	add_settings_section('mos_faq_section_dash_end', '', 'mos_faq_section_end_cb', 'mos_faq');
+
+	add_settings_section('mos_faq_section_content_start', '', 'mos_faq_section_content_start_cb', 'mos_faq');
+	add_settings_section('mos_faq_section_content_end', '', 'mos_faq_section_end_cb', 'mos_faq');
 	
 	add_settings_section('mos_faq_section_scripts_start', '', 'mos_faq_section_scripts_start_cb', 'mos_faq');
 	add_settings_field( 'field_jquery', __( 'JQuery', 'mos_faq' ), 'mos_faq_field_jquery_cb', 'mos_faq', 'mos_faq_section_scripts_start', [ 'label_for' => 'mos_faq_jquery', 'class' => 'mos_faq_row' ] );
@@ -34,6 +37,7 @@ function mos_faq_section_top_nav_cb( $args ) {
 	?>
     <ul class="nav nav-tabs">
         <li class="tab-nav <?php if($data['active_tab'] == 'dashboard') echo 'active';?>"><a data-id="dashboard" href="<?php echo $data['option_prefix'];?>dashboard">Dashboard</a></li>
+        <li class="tab-nav <?php if($data['active_tab'] == 'content') echo 'active';?>"><a data-id="content" href="<?php echo $data['option_prefix'];?>content">Content</a></li>
         <li class="tab-nav <?php if($data['active_tab'] == 'scripts') echo 'active';?>"><a data-id="scripts" href="<?php echo $data['option_prefix'];?>scripts">Scripts</a></li>
     </ul>
 	<?php
@@ -41,15 +45,22 @@ function mos_faq_section_top_nav_cb( $args ) {
 function mos_faq_section_dash_start_cb( $args ) {
 	$data = get_mos_faq_active_tab ();
 	?>
-	<div id="mos-plugin-dashboard" class="tab-con <?php if($data['active_tab'] == 'dashboard') echo 'active';?>">
+	<div id="mos-faq-dashboard" class="tab-con <?php if($data['active_tab'] == 'dashboard') echo 'active';?>">
 		Plugin Details
 
+	<?php
+}
+function mos_faq_section_content_start_cb( $args ) {
+	$data = get_mos_faq_active_tab ();
+	?>
+	<div id="mos-faq-content" class="tab-con <?php if($data['active_tab'] == 'content') echo 'active';?>">
+		Content
 	<?php
 }
 function mos_faq_section_scripts_start_cb( $args ) {
 	$data = get_mos_faq_active_tab ();
 	?>
-	<div id="mos-plugin-scripts" class="tab-con <?php if($data['active_tab'] == 'scripts') echo 'active';?>">
+	<div id="mos-faq-scripts" class="tab-con <?php if($data['active_tab'] == 'scripts') echo 'active';?>">
 	<?php
 }
 function mos_faq_field_jquery_cb( $args ) {
