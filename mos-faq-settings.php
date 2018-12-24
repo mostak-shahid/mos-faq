@@ -1,6 +1,12 @@
 <?php
 if (isset($_POST['mos_faq_submit']) AND $_POST['mos_faq_submit'] == 'Save Changes') {  
+		if ( ! isset( $_POST['mos_faq_nance_verify'] ) ) {
+			return;
+		}
 
+		if ( ! wp_verify_nonce( $_POST['mos_faq_nance_verify'], 'mos_faq_verify' ) ) {
+			return;
+		}
 	    $mos_faq_option = array();
 		// foreach ($_POST as $field => $value) {
 	    // 	$mos_faq_option[$field] = trim($value);
@@ -253,6 +259,7 @@ function mos_faq_admin_page () {
             <li class="tab-nav <?php if($active_tab == 'advanced') echo 'active';?>"><a data-id="advanced" href="?post_type=qa&page=faq_settings&tab=advanced">Advanced CSS, JS</a></li>
         </ul>
         <form method="post">
+        	<?php wp_nonce_field( 'mos_faq_verify', 'mos_faq_nance_verify' ); ?>
         	<div id="mos-faq-dashboard" class="tab-con <?php if($active_tab == 'dashboard') echo 'active' ?>">
             	<h2>Dashboard</h2>
             	<div class="desc">
