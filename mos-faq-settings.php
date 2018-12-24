@@ -7,7 +7,7 @@ function mos_faq_settings_init() {
 
 	add_settings_section('mos_faq_section_content_start', '', 'mos_faq_section_content_start_cb', 'mos_faq');
 	add_settings_field( 'field_content_bg', __( 'Background', 'mos_faq' ), 'mos_faq_field_content_bg_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_pbg' => 'mos_faq_content_pbg', 'label_for_content_hbg' => 'mos_faq_content_hbg', 'label_for_content_abg' => 'mos_faq_content_abg']  );	
-	add_settings_field( 'field_content_font', __( 'Font', 'mos_faq' ), 'mos_faq_field_content_font_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_font_size' => 'mos_faq_content_font_size', 'label_for_font_height' => 'mos_faq_content_font_height', 'label_for_font_align' => 'mos_faq_content_font_align', 'label_for_font_weight' => 'mos_faq_content_font_weight']  );	
+	add_settings_field( 'field_content_font', __( 'Font', 'mos_faq' ), 'mos_faq_field_content_font_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_font_size' => 'mos_faq_content_font_size', 'label_for_content_font_height' => 'mos_faq_content_font_height', 'label_for_content_font_align' => 'mos_faq_content_font_align', 'label_for_content_font_weight' => 'mos_faq_content_font_weight']  );	
 	add_settings_section('mos_faq_section_content_end', '', 'mos_faq_section_end_cb', 'mos_faq');
 	
 	add_settings_section('mos_faq_section_scripts_start', '', 'mos_faq_section_scripts_start_cb', 'mos_faq');
@@ -179,6 +179,7 @@ function mos_faq_field_content_bg_cb( $args ) {
 }
 function mos_faq_field_content_font_cb( $args ) {
 	$options = get_option( 'mos_faq_option' );
+	global $font_align, $font_weight, $border_style, $icons;
 	?>
 	<div class="mos-row">
 		<div class="mos-form-con">
@@ -187,10 +188,21 @@ function mos_faq_field_content_font_cb( $args ) {
             	<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_font_size'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_font_size'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_font_size'] ] ) ? esc_html_e($options[$args['label_for_content_font_size']]) : '';?>" placeholder="Font Size">		                        			
     		</div>	                        		
     	</div>
-    	<div class="mos-form-con">	  
-        	<div class="mos-form-group px-unit">                      		
-            	<label for="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>">Line Height</label>
-            	<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_font_height'] ] ) ? esc_html_e($options[$args['label_for_content_font_height']]) : '';?>" placeholder="Line Height">
+		<div class="mos-form-con">
+    		<div class="mos-form-group px-unit">
+            	<label for="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>">Font Height</label>
+            	<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_font_height'] ] ) ? esc_html_e($options[$args['label_for_content_font_height']]) : '';?>" placeholder="Font Height">		                        			
+    		</div>	                        		
+    	</div>
+    	<div class="mos-form-con">	 
+        	<div class="mos-form-group">                       		
+            	<label for="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>">Text Align</label>
+            	<select name="mos_faq_content_font_align" id="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>" class="full-input">
+            		<option value=""></option>
+            	<?php foreach ($font_align as $key => $value) : ?>
+            		<option value="<?php echo $key ?>" <?php selected($mos_faq_option['mos_faq_content_font_align'], $key) ?>><?php echo $value ?></option>
+            	<?php endforeach; ?>
+            	</select>
             </div>
     	</div>	
 	</div>
