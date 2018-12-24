@@ -10,7 +10,7 @@ function mos_faq_settings_init() {
 
 	add_settings_field( 'field_content_font', __( 'Font', 'mos_faq' ), 'mos_faq_field_content_font_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_font_size' => 'mos_faq_content_font_size', 'label_for_content_font_height' => 'mos_faq_content_font_height', 'label_for_content_font_align' => 'mos_faq_content_font_align', 'label_for_content_font_weight' => 'mos_faq_content_font_weight', 'label_for_content_font_pcolor' => 'mos_faq_content_font_pcolor', 'label_for_content_font_hcolor' => 'mos_faq_content_font_hcolor', 'label_for_content_font_acolor' => 'mos_faq_content_font_acolor'] );
 
-	//add_settings_field( 'field_content_measurements', __( 'Measurements', 'mos_faq' ), 'mos_faq_field_measurements_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_measurements_padding' => 'mos_faq_content_measurements_padding', 'label_for_content_measurements_margin' => 'mos_faq_content_measurements_margin']  );
+	add_settings_field( 'field_content_measurements', __( 'Measurements', 'mos_faq' ), 'mos_faq_field_measurements_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_measurements_padding' => 'mos_faq_content_measurements_padding', 'label_for_content_measurements_margin' => 'mos_faq_content_measurements_margin']  );
 
 	add_settings_section('mos_faq_section_content_end', '', 'mos_faq_section_end_cb', 'mos_faq');
 	
@@ -243,25 +243,26 @@ function mos_faq_field_content_font_cb( $args ) {
 	</div>
 	<?php
 }
-/*function mos_faq_field_measurements_cb( $args ) {
+function mos_faq_field_measurements_cb( $args ) {
 	$options = get_option( 'mos_faq_option' );
 	?>
 
 	<div class="mos-row">		                        	
     	<div class="mos-form-con">	 
         	<div class="mos-form-group"> 
-            	<label for="<?php echo esc_attr( $args['label_for_content_font_size'] ); ?>">Content Padding</label>                      		
-				<input type="text" name="mos_faq_content_measurements_padding" id="<?php echo esc_attr( $args['label_for_content_font_size'] ); ?>" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_measurements_padding']; ?>" placeholder="Content Padding">
+            	<label for="<?php echo esc_attr( $args['label_for_content_measurements_padding'] ); ?>">Content Padding</label>                      		
+				<input type="text" name="mos_faq_content_measurements_padding" id="<?php echo esc_attr( $args['label_for_content_measurements_padding'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_measurements_padding'] ] ) ? esc_html_e($options[$args['label_for_content_measurements_padding']]) : '';?>" placeholder="Content Padding">
             </div>
     	</div>
     	<div class="mos-form-con">	 
         	<div class="mos-form-group">
-        		<input type="text" name="mos_faq_content_measurements_margin" id="mos_faq_content_measurements_margin" class="full-input" value="<?php echo @$mos_faq_option['mos_faq_content_measurements_margin']; ?>" placeholder="Content Margin">
+            	<label for="<?php echo esc_attr( $args['label_for_content_measurements_margin'] ); ?>">Content Margin</label>   
+        		<input type="text" name="mos_faq_content_measurements_padding" id="<?php echo esc_attr( $args['label_for_content_measurements_margin'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_measurements_margin'] ] ) ? esc_html_e($options[$args['label_for_content_measurements_margin']]) : '';?>" placeholder="Content Margin">
             </div>
     	</div>
     </div>
 	<?php	
-}*/
+}
 function mos_faq_section_scripts_start_cb( $args ) {
 	$data = get_mos_faq_active_tab ();
 	?>
