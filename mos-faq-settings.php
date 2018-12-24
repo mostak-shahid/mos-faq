@@ -196,15 +196,26 @@ function mos_faq_field_content_font_cb( $args ) {
     	</div>
     	<div class="mos-form-con">	 
         	<div class="mos-form-group">                       		
-            	<label for="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>">Text Align</label>
-            	<select name="mos_faq_content_font_align" id="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>" class="full-input">
+            	<label for="<?php echo esc_attr( $args['label_for_content_font_align'] ); ?>">Text Align</label>
+            	<select name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_font_align'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_font_align'] ); ?>" class="full-input">
             		<option value=""></option>
             	<?php foreach ($font_align as $key => $value) : ?>
-            		<option value="<?php echo $key ?>" <?php selected($mos_faq_option['mos_faq_content_font_align'], $key) ?>><?php echo $value ?></option>
+            		<option value="<?php echo $key ?>" <?php echo isset( $options[ $args['label_for_content_font_align'] ] ) ? ( selected( $options[ $args['label_for_content_font_align'] ], $key, false ) ) : ( '' ); ?> ><?php echo $value ?></option>
             	<?php endforeach; ?>
             	</select>
             </div>
     	</div>	
+    	<div class="mos-form-con">	 
+        	<div class="mos-form-group">                       		
+            	<label for="<?php echo esc_attr( $args['label_for_content_font_weight'] ); ?>">Font Weight &amp; Style</label>
+				<select name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_font_weight'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_font_weight'] ); ?>" class="full-input">
+					<option value=""></option>
+            	<?php foreach ($font_weight as $key => $value) : ?>
+            		<option value="<?php echo $key ?>" <?php echo isset( $options[ $args['label_for_content_font_weight'] ] ) ? ( selected( $options[ $args['label_for_content_font_weight'] ], $key, false ) ) : ( '' ); ?>><?php echo $value ?></option>
+            	<?php endforeach; ?>
+				</select>
+            </div>
+    	</div>
 	</div>
 	<?php
 }
