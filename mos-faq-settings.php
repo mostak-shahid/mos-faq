@@ -251,13 +251,13 @@ function mos_faq_field_measurements_cb( $args ) {
     	<div class="mos-form-con">	 
         	<div class="mos-form-group"> 
             	<label for="<?php echo esc_attr( $args['label_for_content_measurements_padding'] ); ?>">Content Padding</label>                      		
-				<input type="text" name="mos_faq_content_measurements_padding" id="<?php echo esc_attr( $args['label_for_content_measurements_padding'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_measurements_padding'] ] ) ? esc_html_e($options[$args['label_for_content_measurements_padding']]) : '';?>" placeholder="Content Padding">
+				<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_measurements_padding'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_measurements_padding'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_measurements_padding'] ] ) ? esc_html_e($options[$args['label_for_content_measurements_padding']]) : '';?>" placeholder="Content Padding">
             </div>
     	</div>
     	<div class="mos-form-con">	 
         	<div class="mos-form-group">
             	<label for="<?php echo esc_attr( $args['label_for_content_measurements_margin'] ); ?>">Content Margin</label>   
-        		<input type="text" name="mos_faq_content_measurements_padding" id="<?php echo esc_attr( $args['label_for_content_measurements_margin'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_measurements_margin'] ] ) ? esc_html_e($options[$args['label_for_content_measurements_margin']]) : '';?>" placeholder="Content Margin">
+        		<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_measurements_margin'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_measurements_margin'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_measurements_margin'] ] ) ? esc_html_e($options[$args['label_for_content_measurements_margin']]) : '';?>" placeholder="Content Margin">
             </div>
     	</div>
     </div>
