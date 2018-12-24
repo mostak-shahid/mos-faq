@@ -6,12 +6,14 @@ function mos_faq_settings_init() {
 	add_settings_section('mos_faq_section_dash_end', '', 'mos_faq_section_end_cb', 'mos_faq');
 
 	add_settings_section('mos_faq_section_content_start', '', 'mos_faq_section_content_start_cb', 'mos_faq');
+	add_settings_field( 'field_content_bg', __( 'Background', 'mos_faq' ), 'mos_faq_field_content_bg_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_pbg' => 'mos_faq_content_pbg', 'label_for_content_hbg' => 'mos_faq_content_hbg', 'label_for_content_abg' => 'mos_faq_content_abg']  );	
+	add_settings_field( 'field_content_font', __( 'Font', 'mos_faq' ), 'mos_faq_field_content_font_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_font_size' => 'mos_faq_content_font_size', 'label_for_font_height' => 'mos_faq_content_font_height', 'label_for_font_align' => 'mos_faq_content_font_align', 'label_for_font_weight' => 'mos_faq_content_font_weight']  );	
 	add_settings_section('mos_faq_section_content_end', '', 'mos_faq_section_end_cb', 'mos_faq');
 	
 	add_settings_section('mos_faq_section_scripts_start', '', 'mos_faq_section_scripts_start_cb', 'mos_faq');
-	add_settings_field( 'field_jquery', __( 'JQuery', 'mos_faq' ), 'mos_faq_field_jquery_cb', 'mos_faq', 'mos_faq_section_scripts_start', [ 'label_for' => 'mos_faq_jquery', 'class' => 'mos_faq_row' ] );
-	add_settings_field( 'field_css', __( 'Custom Css', 'mos_faq' ), 'mos_faq_field_css_cb', 'mos_faq', 'mos_faq_section_scripts_start', [ 'label_for' => 'mos_faq_css', 'class' => 'mos_faq_row' ] );
-	add_settings_field( 'field_js', __( 'Custom Js', 'mos_faq' ), 'mos_faq_field_js_cb', 'mos_faq', 'mos_faq_section_scripts_start', [ 'label_for' => 'mos_faq_js', 'class' => 'mos_faq_row' ] );
+	add_settings_field( 'field_jquery', __( 'JQuery', 'mos_faq' ), 'mos_faq_field_jquery_cb', 'mos_faq', 'mos_faq_section_scripts_start', [ 'label_for' => 'mos_faq_jquery' ] );
+	add_settings_field( 'field_css', __( 'Custom Css', 'mos_faq' ), 'mos_faq_field_css_cb', 'mos_faq', 'mos_faq_section_scripts_start', [ 'label_for' => 'mos_faq_css' ] );
+	add_settings_field( 'field_js', __( 'Custom Js', 'mos_faq' ), 'mos_faq_field_js_cb', 'mos_faq', 'mos_faq_section_scripts_start', [ 'label_for' => 'mos_faq_js' ] );
 
 	add_settings_section('mos_faq_section_end', '', 'mos_faq_section_end_cb', 'mos_faq');
 
@@ -27,7 +29,7 @@ function get_mos_faq_active_tab () {
 		//'option_prefix' = "?post_type=p_file&page=mos_faq_settings&tab=",
 	);
 	if (isset($_GET['tab'])) $active_tab = $_GET['tab'];
-	elseif (isset($_COOKIE['plugin_active_tab'])) $active_tab = $_COOKIE['plugin_active_tab'];
+	elseif (isset($_COOKIE['faq_active_tab'])) $active_tab = $_COOKIE['faq_active_tab'];
 	else $active_tab = 'dashboard';
 	$output['active_tab'] = $active_tab;
 	return $output;
@@ -46,15 +48,152 @@ function mos_faq_section_dash_start_cb( $args ) {
 	$data = get_mos_faq_active_tab ();
 	?>
 	<div id="mos-faq-dashboard" class="tab-con <?php if($data['active_tab'] == 'dashboard') echo 'active';?>">
-		Plugin Details
-
+		<h2><?php esc_html_e('Dashboard') ?></h2>
+		<p><strong>For using faqs in your post or page use this shortcode</strong></p>
+		<p>[mos_faq]</p>
+		<h3>Properties</h3>
+		<dl>
+			<dt>
+				<tt>limit</tt>
+			</dt>
+			<dd>(int) - number of post to show per page. Use 'limit'=-1 to show all posts (the 'offset' parameter is ignored with a -1 value).</dd>
+			
+			<dt>
+				<tt>offset</tt>
+			</dt>
+			<dd>(int) - number of post to displace or pass over. Warning: Setting the offset parameter overrides/ignores the paged parameter and breaks pagination. The 'offset' parameter is ignored when 'limit'=-1 (show all posts) is used.</dd>	
+								
+			<dt>
+				<tt>category</tt>
+			</dt>
+			<dd>(int) - category ids from where you like to display posts. Please seperate ids by comma (,). </dd>
+								
+			<dt>
+				<tt>tag</tt>
+			</dt>
+			<dd>(int) - tag ids from where you like to display posts. Please seperate ids by comma (,). </dd>
+								
+			<dt>
+				<tt>order</tt>
+			</dt>
+			<dd>
+				(string | array) - Designates the ascending or descending order of the 'orderby' parameter. Defaults to 'DESC'. An array can be used for multiple order/orderby sets
+				<ol>
+					<li>'ASC' - ascending order from lowest to highest values (1, 2, 3; a, b, c).</li>
+					<li>'DESC' - descending order from highest to lowest values (3, 2, 1; c, b, a).</li>
+				</ol>
+			</dd>
+								
+			<dt>
+				<tt>orderby</tt>
+			</dt>
+			<dd>
+				(string | array) - Sort retrieved posts by parameter. Defaults to 'date (post_date)'. One or more options can be passed.
+				<ol>
+					<li>'none' - No order</li>
+					<li>'ID' - Order by post id. Note the capitalization.</li>
+					<li>'author' - Order by author. ('post_author' is also accepted.)</li>
+					<li>'title' - Order by title. ('post_title' is also accepted.)</li>
+					<li>'name' - Order by post name (post slug). ('post_name' is also accepted.)</li>
+					<li>'type' - Order by post type. ('post_type' is also accepted.)</li>
+					<li>'date' - Order by date. ('post_date' is also accepted.)</li>
+					<li>'modified' - Order by last modified date. ('post_modified' is also accepted.)</li>
+					<li>'parent' - Order by post/page parent id. ('post_parent' is also accepted.)</li>
+					<li>'rand' - Random order. You can also use 'RAND(x)' where 'x' is an integer seed value.</li>
+					<li>'comment_count' - Order by number of comments.</li>
+				</ol>
+			</dd>
+								
+			<dt>
+				<tt>author</tt>
+			</dt>
+			<dd>(int | string) - use author id or comma-separated list of IDs.</dd>
+								
+			<dt>
+				<tt>container</tt>
+			</dt>
+			<dd>(boolean) - Whether or not to include wrapper.</dd>
+								
+			<dt>
+				<tt>container_class</tt>
+			</dt>
+			<dd>(string) - Class that is applied to the container.</dd>
+								
+			<dt>
+				<tt>class</tt>
+			</dt>
+			<dd>(string) - Class that is applied to the faq body.</dd>
+								
+			<dt>
+				<tt>singular</tt>
+			</dt>
+			<dd>(boolean) - Whether or not to allow to open singularly.</dd>
+								
+			<dt>
+				<tt>pagination</tt>
+			</dt>
+			<dd>(boolean) - Whether or not to include pagination.</dd>
+								
+			<dt>
+				<tt>grid</tt>
+			</dt>
+			<dd>(string) - Range from 1 to 5.</dd>
+								
+			<dt>
+				<tt>view</tt>
+			</dt>
+			<dd>(string) - faq can be viewwd in like accordion, collapsible or block.</dd>
+		</dl>
 	<?php
 }
 function mos_faq_section_content_start_cb( $args ) {
 	$data = get_mos_faq_active_tab ();
 	?>
 	<div id="mos-faq-content" class="tab-con <?php if($data['active_tab'] == 'content') echo 'active';?>">
-		Content
+	<?php
+}
+function mos_faq_field_content_bg_cb( $args ) {
+	$options = get_option( 'mos_faq_option' );
+	?>
+	<div class="mos-row">
+    	<div class="mos-form-con">	  
+        	<div class="mos-form-group">
+            	<label for="<?php echo esc_attr( $args['label_for_content_pbg'] ); ?>">Primary Background</label>            	
+        		<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_pbg'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_pbg'] ); ?>" class="moscp" value="<?php echo isset( $options[ $args['label_for_content_pbg'] ] ) ? esc_html_e($options[$args['label_for_content_pbg']]) : '';?>" data-format="rgb" data-opacity="1" placeholder="Primary Background"/>
+            </div>
+    	</div>
+    	<div class="mos-form-con">	  
+        	<div class="mos-form-group">
+            	<label for="<?php echo esc_attr( $args['label_for_content_hbg'] ); ?>">Hover Background</label>            	
+        		<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_hbg'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_hbg'] ); ?>" class="moscp" value="<?php echo isset( $options[ $args['label_for_content_hbg'] ] ) ? esc_html_e($options[$args['label_for_content_hbg']]) : '';?>" data-format="rgb" data-opacity="1" placeholder="Hover Background"/>
+            </div>
+    	</div>
+    	<div class="mos-form-con">	  
+        	<div class="mos-form-group">
+            	<label for="<?php echo esc_attr( $args['label_for_content_abg'] ); ?>">Active Background</label>            	
+        		<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_abg'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_abg'] ); ?>" class="moscp" value="<?php echo isset( $options[ $args['label_for_content_abg'] ] ) ? esc_html_e($options[$args['label_for_content_abg']]) : '';?>" data-format="rgb" data-opacity="1" placeholder="Active Background"/>
+            </div>
+    	</div>		
+	</div>
+	<?php
+}
+function mos_faq_field_content_font_cb( $args ) {
+	$options = get_option( 'mos_faq_option' );
+	?>
+	<div class="mos-row">
+		<div class="mos-form-con">
+    		<div class="mos-form-group px-unit">
+            	<label for="<?php echo esc_attr( $args['label_for_content_font_size'] ); ?>">Font Size</label>
+            	<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_font_size'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_font_size'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_font_size'] ] ) ? esc_html_e($options[$args['label_for_content_font_size']]) : '';?>" placeholder="Font Size">		                        			
+    		</div>	                        		
+    	</div>
+    	<div class="mos-form-con">	  
+        	<div class="mos-form-group px-unit">                      		
+            	<label for="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>">Line Height</label>
+            	<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_font_height'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_font_height'] ] ) ? esc_html_e($options[$args['label_for_content_font_height']]) : '';?>" placeholder="Line Height">
+            </div>
+    	</div>	
+	</div>
 	<?php
 }
 function mos_faq_section_scripts_start_cb( $args ) {
