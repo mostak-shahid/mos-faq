@@ -5,13 +5,16 @@ function mos_faq_settings_init() {
 	add_settings_section('mos_faq_section_dash_start', '', 'mos_faq_section_dash_start_cb', 'mos_faq');
 	add_settings_section('mos_faq_section_dash_end', '', 'mos_faq_section_end_cb', 'mos_faq');
 
+	add_settings_section('mos_faq_section_icon_start', '', 'mos_faq_section_icon_start_cb', 'mos_faq');
+	add_settings_field( 'field_icon_bg', __( 'Background', 'mos_faq' ), 'mos_faq_field_icon_bg_cb', 'mos_faq', 'mos_faq_section_icon_start', [ 'label_for_icon_pbg' => 'mos_faq_icon_pbg', 'label_for_icon_hbg' => 'mos_faq_icon_hbg', 'label_for_icon_abg' => 'mos_faq_icon_abg']  );		
+
+	add_settings_section('mos_faq_section_icon_end', '', 'mos_faq_section_end_cb', 'mos_faq');
+
 	add_settings_section('mos_faq_section_content_start', '', 'mos_faq_section_content_start_cb', 'mos_faq');
 	add_settings_field( 'field_content_bg', __( 'Background', 'mos_faq' ), 'mos_faq_field_content_bg_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_pbg' => 'mos_faq_content_pbg', 'label_for_content_hbg' => 'mos_faq_content_hbg', 'label_for_content_abg' => 'mos_faq_content_abg']  );
-
 	add_settings_field( 'field_content_font', __( 'Font', 'mos_faq' ), 'mos_faq_field_content_font_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_font_size' => 'mos_faq_content_font_size', 'label_for_content_font_height' => 'mos_faq_content_font_height', 'label_for_content_font_align' => 'mos_faq_content_font_align', 'label_for_content_font_weight' => 'mos_faq_content_font_weight', 'label_for_content_font_pcolor' => 'mos_faq_content_font_pcolor', 'label_for_content_font_hcolor' => 'mos_faq_content_font_hcolor', 'label_for_content_font_acolor' => 'mos_faq_content_font_acolor'] );
-
-	add_settings_field( 'field_content_measurements', __( 'Measurements', 'mos_faq' ), 'mos_faq_field_measurements_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_measurements_padding' => 'mos_faq_content_measurements_padding', 'label_for_content_measurements_margin' => 'mos_faq_content_measurements_margin']  );
-
+	add_settings_field( 'field_content_measurements', __( 'Measurements', 'mos_faq' ), 'mos_faq_field_measurements_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_measurements_padding' => 'mos_faq_content_measurements_padding', 'label_for_content_measurements_margin' => 'mos_faq_content_measurements_margin']  );	
+	add_settings_field( 'field_content_border', __( 'Border', 'mos_faq' ), 'mos_faq_field_content_border_cb', 'mos_faq', 'mos_faq_section_content_start', [ 'label_for_content_border_width' => 'mos_faq_content_border_width', 'label_for_content_border_style' => 'mos_faq_content_border_style', 'label_for_content_border_color' => 'mos_faq_content_border_color', 'label_for_content_border_radius' => 'mos_faq_content_border_radius']  );
 	add_settings_section('mos_faq_section_content_end', '', 'mos_faq_section_end_cb', 'mos_faq');
 	
 	add_settings_section('mos_faq_section_scripts_start', '', 'mos_faq_section_scripts_start_cb', 'mos_faq');
@@ -43,6 +46,7 @@ function mos_faq_section_top_nav_cb( $args ) {
 	?>
     <ul class="nav nav-tabs">
         <li class="tab-nav <?php if($data['active_tab'] == 'dashboard') echo 'active';?>"><a data-id="dashboard" href="<?php echo $data['option_prefix'];?>dashboard">Dashboard</a></li>
+        <li class="tab-nav <?php if($data['active_tab'] == 'icon') echo 'active';?>"><a data-id="icon" href="<?php echo $data['option_prefix'];?>icon">Icon</a></li>
         <li class="tab-nav <?php if($data['active_tab'] == 'content') echo 'active';?>"><a data-id="content" href="<?php echo $data['option_prefix'];?>content">Content</a></li>
         <li class="tab-nav <?php if($data['active_tab'] == 'scripts') echo 'active';?>"><a data-id="scripts" href="<?php echo $data['option_prefix'];?>scripts">Scripts</a></li>
     </ul>
@@ -148,6 +152,38 @@ function mos_faq_section_dash_start_cb( $args ) {
 			</dt>
 			<dd>(string) - faq can be viewwd in like accordion, collapsible or block.</dd>
 		</dl>
+	<?php
+}
+function mos_faq_section_icon_start_cb( $args ) {
+	$data = get_mos_faq_active_tab ();
+	?>
+	<div id="mos-faq-dashboard" class="tab-con <?php if($data['active_tab'] == 'icon') echo 'active';?>">
+		<h2><?php esc_html_e('Icon Styling') ?></h2>
+	<?php
+}
+function mos_faq_field_icon_bg_cb( $args ) {
+	$options = get_option( 'mos_faq_option' );
+	?>
+	<div class="mos-row">
+    	<div class="mos-form-con">	  
+        	<div class="mos-form-group">
+            	<label for="<?php echo esc_attr( $args['label_for_icon_pbg'] ); ?>">Primary Background</label>            	
+        		<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_icon_pbg'] ); ?>]" id="<?php echo esc_attr( $args['label_for_icon_pbg'] ); ?>" class="moscp" value="<?php echo isset( $options[ $args['label_for_icon_pbg'] ] ) ? esc_html_e($options[$args['label_for_icon_pbg']]) : '';?>" data-format="rgb" data-opacity="1" placeholder="Primary Background"/>
+            </div>
+    	</div>
+    	<div class="mos-form-con">	  
+        	<div class="mos-form-group">
+            	<label for="<?php echo esc_attr( $args['label_for_icon_hbg'] ); ?>">Hover Background</label>            	
+        		<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_icon_hbg'] ); ?>]" id="<?php echo esc_attr( $args['label_for_icon_hbg'] ); ?>" class="moscp" value="<?php echo isset( $options[ $args['label_for_icon_hbg'] ] ) ? esc_html_e($options[$args['label_for_icon_hbg']]) : '';?>" data-format="rgb" data-opacity="1" placeholder="Hover Background"/>
+            </div>
+    	</div>
+    	<div class="mos-form-con">	  
+        	<div class="mos-form-group">
+            	<label for="<?php echo esc_attr( $args['label_for_icon_abg'] ); ?>">Active Background</label>            	
+        		<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_icon_abg'] ); ?>]" id="<?php echo esc_attr( $args['label_for_icon_abg'] ); ?>" class="moscp" value="<?php echo isset( $options[ $args['label_for_icon_abg'] ] ) ? esc_html_e($options[$args['label_for_icon_abg']]) : '';?>" data-format="rgb" data-opacity="1" placeholder="Active Background"/>
+            </div>
+    	</div>		
+	</div>
 	<?php
 }
 function mos_faq_section_content_start_cb( $args ) {
@@ -261,6 +297,42 @@ function mos_faq_field_measurements_cb( $args ) {
             </div>
     	</div>
     </div>
+	<?php	
+}
+function mos_faq_field_content_border_cb( $args ) {
+	$options = get_option( 'mos_faq_option' );	
+	global $font_align, $font_weight, $border_style, $icons;
+	?>
+	<div class="mos-row">
+		<div class="mos-form-con">	  
+	    	<div class="mos-form-group px-unit">
+            	<label for="<?php echo esc_attr( $args['label_for_content_border_width'] ); ?>">Border Width</label>                       		
+	        	<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_border_width'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_border_width'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_border_width'] ] ) ? esc_html_e($options[$args['label_for_content_border_width']]) : '';?>" placeholder="Border Width">
+	        </div>
+		</div>		                        	
+		<div class="mos-form-con">	 
+	    	<div class="mos-form-group">
+            	<label for="<?php echo esc_attr( $args['label_for_content_border_style'] ); ?>">Content Margin</label>                        		
+				<select name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_border_style'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_border_style'] ); ?>" class="full-input">
+				<?php foreach ($border_style as $key => $value) : ?>
+	        		<option value="<?php echo $key ?>" <?php echo isset( $options[ $args['label_for_content_border_style'] ] ) ? ( selected( $options[ $args['label_for_content_border_style'] ], $key, false ) ) : ( '' ); ?> ><?php echo $value ?></option>
+	        	<?php endforeach; ?>
+				</select>
+	        </div>
+		</div>
+		<div class="mos-form-con">	 
+	    	<div class="mos-form-group">
+            	<label for="<?php echo esc_attr( $args['label_for_content_border_color'] ); ?>">Border Color</label>                        		
+				<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_border_color'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_border_color'] ); ?>" class="moscp full-input" value="<?php echo isset( $options[ $args['label_for_content_border_color'] ] ) ? esc_html_e($options[$args['label_for_content_border_color']]) : '';?>" data-format="rgb" data-opacity="1" placeholder="Border Color">
+	        </div>
+		</div>
+		<div class="mos-form-con">	  
+	    	<div class="mos-form-group px-unit">
+            	<label for="<?php echo esc_attr( $args['label_for_content_border_radius'] ); ?>">Border Radius</label>                       		
+	        	<input type="text" name="mos_faq_option[<?php echo esc_attr( $args['label_for_content_border_radius'] ); ?>]" id="<?php echo esc_attr( $args['label_for_content_border_radius'] ); ?>" class="full-input" value="<?php echo isset( $options[ $args['label_for_content_border_radius'] ] ) ? esc_html_e($options[$args['label_for_content_border_radius']]) : '';?>" placeholder="Border Radius">
+	        </div>
+		</div>
+	</div>
 	<?php	
 }
 function mos_faq_section_scripts_start_cb( $args ) {
